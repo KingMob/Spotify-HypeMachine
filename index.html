@@ -16,20 +16,27 @@
         #content-left {float: none; margin-left: auto; margin-right: auto;}
 
     </style>
-    <!-- <style type="text/css" src="sp://hypemachine/css/layout-wide.css"></style>
-    <style type="text/css" src="sp://hypemachine/css/stylish-cdn.css"></style> -->
 
     <script type="text/javascript" src="sp://hypemachine/js/jquery-1.7.2.js"></script>
 
     <script>
+        /* Instantiate the global sp object; include models & views */
+        var sp = getSpotifyApi(1);
+        var models = sp.require('sp://import/scripts/api/models');
+
+        var args = models.application.arguments;
+            // alert(args[0]);
+
     	$(document).ready(function(){
-	    	$.getJSON("http://hypem.com/playlist/popular/noremix/json/1/data.js", function(data) {
+    		if(args.length === 0){
+    		}
+    		else{
+    			$["JSON_URI"] = args[0];
+    		}
+	    	$.getJSON($["JSON_URI"], function(data) {
 	    		var items = [];
 
 				$.each(data, function(rank, songmap) {
-					//items.push('<li id="' + songmap["postid"] + '">' + songmap["artist"] + '- ' + songmap["title"] + '</li>');
-					// items.push(trackHTML(songmap));
-					// trackHTML(rank, songmap).appendTo("#content-left");
 					$("#content-left").append(trackHTML(rank, songmap));
 				});
 
@@ -53,7 +60,7 @@
 					<span class="rank">' + (parseInt(rank) + 1) + '</span>\
 					<div class="track-info"> </div>\
 					<h3 class="track_name">\
-		                <a class="artist" title="' + songmap["artist"] + ' - search hype machine for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a> -     	<a class="track" title="' + songmap["title"] + ' - go to page for this track" href="/track/' + songmap["mediaid"] + '/' + encodeURIComponent(songmap["artist"] + ' - ' + songmap["title"]) + '">\
+		                <a class="artist" title="' + songmap["artist"] + ' - search Spotify for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a> - <a class="track" title="Search for ' + songmap["title"] + '" onClick="spotifySearch(' + songmap["mediaid"] + ',\'' + songmap["title"] + '\')">\
 		    				<span class="base-title">' + songmap["title"] + '</span>\
 		    			</a>\
 		                <img src="http://static.hypem.net/rev_1330987235/images/icon-share-small.png" class="share" onmouseover="share_item(\'' + songmap["mediaid"] + '\'); return false;">\
