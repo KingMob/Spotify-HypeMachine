@@ -1,16 +1,16 @@
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, em, font, img, small, strike, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, iframe, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+/*html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, em, font, img, small, strike, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, iframe, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
 ol, ul { list-style: none; }
 table { border-collapse: separate; border-spacing: 0; }
 caption, th, td { text-align: left; font-weight: normal; }
 blockquote:before, blockquote:after, { content: ""; }
 blockquote, q { quotes: "" ""; }
-/*i { font-style: normal; }*/
+*//*i { font-style: normal; }*/
 .clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
 .clearfix { display: inline-block; }
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
-body {
+/*body {
     background: #FFF;
     color: #111;
     font: 11px/1.7em 'Helvetica', 'Arial', sans-serif;
@@ -18,7 +18,7 @@ body {
     position: relative;
     text-align: center;
     width: 100%;
-}
+}*/
 
 #player-loading {
     left: 50%;
@@ -96,7 +96,7 @@ abbr {
     padding-top: 25px;
     margin-left: 10px;
 }
-
+/*
 h1 {
 }
 
@@ -105,8 +105,6 @@ h1.noplay {
 }
 
 h2 {
-/*    background: #111;
-    color: #fff; */
     font-size: 22px;
     font-weight: bold;
     padding: 5px;
@@ -162,7 +160,8 @@ a, .a {
     color: #0063dc;
     text-decoration: none;
 }
-
+*/
+/*
 a.fav-off, a.fav-on, a.fav-load {
     border: 0;
     color: white;
@@ -247,7 +246,7 @@ a:hover.fav-on,
 a:hover.fav-load {
     background: none;
 }
-
+*/
 #end-of-infinity {
     background: #FEF2EB;
     padding: 10px;
