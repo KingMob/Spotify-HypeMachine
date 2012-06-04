@@ -1,0 +1,5395 @@
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, cite, code, del, em, font, img, small, strike, sub, sup, dl, dt, dd, ol, ul, li, fieldset, form, iframe, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+ol, ul { list-style: none; }
+table { border-collapse: separate; border-spacing: 0; }
+caption, th, td { text-align: left; font-weight: normal; }
+blockquote:before, blockquote:after, { content: ""; }
+blockquote, q { quotes: "" ""; }
+/*i { font-style: normal; }*/
+.clearfix:after { content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0; }
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+body {
+    background: #FFF;
+    color: #111;
+    font: 11px/1.7em 'Helvetica', 'Arial', sans-serif;
+    overflow-x: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+}
+
+#player-loading {
+    left: 50%;
+    position: fixed;
+    width: 200px;
+    top: 300px;
+    z-index: 100;
+    text-align: center;
+}
+
+#player-loading span {
+    color: #fff;
+    font-weight: 700;
+    font-size: 22px;
+    position: absolute;
+    display: block;
+    left: -100px;
+    width: 200px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    padding: 20px 20px 60px;
+    background: #333 url(http://static-ak.hypem.net/rev_1320095545/images/ajax-loader.gif) center 50px no-repeat;
+    text-align: center;
+}
+
+#ajax-loader {
+    display: inline-block;
+    margin: 10px auto;
+}
+
+#directory-blogs-inject {
+    clear: both;
+}
+
+#logo {
+    border: 0;
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/logo.png) left -30px no-repeat;
+    color: #83C441;
+    cursor: hand;
+    display: block;
+    float: none;
+    font-size: 38px;
+    font-weight: 700;
+    height: 28px;
+    line-height: 1em;
+    overflow: visible;
+    margin-right: auto;
+    position: relative;
+    text-align: left;
+    top: 7px;
+    width: 222px;
+    margin-left: auto;
+}
+
+#logo:hover {
+    background-position: 0 0;
+}
+
+abbr {
+    cursor: help;
+}
+
+#recently-posted{
+    position:relative;
+    float:left;
+}
+
+#message h1, #radio-blogs h1, #recently-posted h1 {
+    font-size: 24px;
+    line-height: 1.1em;
+    margin: 0;
+    text-align: left;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    margin-left: 10px;
+}
+
+h1 {
+}
+
+h1.noplay {
+    margin-left: -55px;
+}
+
+h2 {
+/*    background: #111;
+    color: #fff; */
+    font-size: 22px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+h2 a#tooltip {
+    background: #333;
+    font-weight: 700;
+    padding: 1px 5px;
+}
+
+h2 a,s
+h2 i {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+h2 a:hover#tooltip {
+    background: #fff;
+}
+
+h2 span {
+    color: #ddd;
+}
+
+h2 strong {
+    padding: 1px 0 6px;
+}
+
+h3 a,
+h4 a {
+    color: #444;
+}
+
+h4 {
+    color: #111;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-left: 65px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+::selection,
+::-moz-selection {
+    background: #ff9;
+}
+
+a, .a {
+    color: #0063dc;
+    text-decoration: none;
+}
+
+a.fav-off, a.fav-on, a.fav-load {
+    border: 0;
+    color: white;
+    display: block;
+    float: right;
+    font-size: 1px;
+    height: 18px;
+    overflow: hidden;
+    position: relative;
+    text-indent: -2000px;
+    width: 20px;
+    margin: 0 10px 0 5px;
+}
+
+a.fav-off span,
+a.fav-on span,
+a.fav-load span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-fav.png) top left no-repeat;
+    cursor: hand;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+a.fav-on span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-fav.png) 0 -48px no-repeat;
+}
+
+a.fav-load span {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/icon-loading.gif) center center no-repeat;
+}
+
+a.favcount-off,
+a.favcount-on {
+    color: #b3b3b3;
+    font: 700 20px/1em 'Helvetica', 'Arial', sans-serif;
+}
+
+a.favcount-off:hover,
+a.favcount-on:hover,
+#content-right h3 a,
+#content-right #radio-archive ul li a:hover .title,
+#content-right #news ul li a:hover .title,
+#content-right #current-hype a h3,
+#content-right #current-hype a:hover li,
+#twitter-board h3 a {
+    color: #0063dc;
+}
+
+a.favcount-on {
+    color: #ed2024;
+}
+
+a.tweets_extra_toggle:hover {
+    border-bottom: 0;
+    text-decoration: underline;
+}
+
+a.view-more {
+    display: block;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+a:hover,
+#content-right #sidebar-stats ul li a:hover span,
+#content-left .section h3 a:hover .search_match,
+#twitter-board li a:hover em {
+    text-decoration: underline;
+}
+
+a:hover.fav-off span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-fav.png) 0 -24px no-repeat;
+}
+
+a:hover.fav-off,
+a:hover.fav-on,
+a:hover.fav-load {
+    background: none;
+}
+
+#end-of-infinity {
+    background: #FEF2EB;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    margin: 10px 0 20px 0;
+}
+
+#infinite-tracks-button {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 10px 0 10px 0;
+}
+
+#infinite-tracks-button:hover {
+background: #EEE;
+}
+
+#show-search-results {
+    background: #FEF2EB;
+    padding: 10px;
+    text-align: center;
+    display: block;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#show-search-results:hover {
+    background: none;
+}
+
+#takeover-link img {
+    display: none;
+    opacity: 0px;
+}
+
+#ad-report-rectangle {
+    text-align: right;
+}
+
+#ad-report-rectangle a {
+    padding: 5px;
+}
+
+#ad-rectangle-flag {
+    margin-bottom: 9px;
+}
+
+#ad-skyscraper {
+    float: left;
+    position: relative;
+    z-index: 1;
+}
+
+#ad-report-skyscraper {
+    clear: left;
+    padding: 0 0 0 58px;
+}
+
+.ad-leaderboard {
+    height: 90px;
+    position: relative;
+    float: right;
+    right: 0;
+    text-align: right;
+    top: 0px;
+    width: 728px;
+    z-index: 0;
+}
+
+#message .ad-leaderboard {
+    position: relative;
+    float: none;
+    /*left: -7px;*/
+}
+
+#message #ad-report-leaderboard {
+    text-align:right;
+    padding-right: 5px;
+}
+
+.ad-leaderboard-midpage {
+    height: 90px;
+    position: relative;
+    text-align: right;
+    width: 728px;
+    z-index: 0;
+    margin: 0 auto;
+    padding: 0 0 20px 0;
+}
+
+/*
+#ad-report-leaderboard {
+    position: absolute;
+    right: 0;
+    top: 9px;
+}
+*/
+
+#ad-report-leaderboard a img,
+#ad-report-skyscraper a img,
+#ad-report-rectangle a img {
+    padding: 3px;
+}
+
+#blog #content-left h2 {
+    font-size: 14px;
+    position: relative;
+}
+
+#blog #content-left h2 span {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+}
+
+#blog #message,
+#merch #message {
+    padding-left: 0;
+    width: 960px;
+}
+
+#blog .feedback {
+    border-top: 1px solid #ddd;
+    margin: 5px 0 25px;
+    padding: 5px;
+}
+
+#blog-list p {
+    margin: 0 0 15px;
+}
+
+#overlay {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/overlay.png);
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+#box {
+    border: 3px solid #fff;
+    font-size: 13px;
+    text-align: left;
+    z-index: 10000 !important;
+}
+
+#boxContents {
+    height: 100%;
+    width: 100%;
+}
+
+#box #badpassword {
+    color: #e43a00;
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 10px;
+}
+
+#box #big {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#box .superbig {
+    font-size: 44px;
+    font-weight: 700;
+}
+
+#box #buytrack-info div a:hover {
+    border: 0;
+    padding: 0;
+    text-decoration: underline;
+}
+
+#box #close {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    z-index: 9999;
+}
+
+#box #connectoptions label input,
+#content-left #filter li#history a,
+#content-left #filter li#history ul li a {
+    width: 140px;
+}
+
+#box #connectoptions label {
+    border: 0;
+}
+
+#box #email_friend_notify,
+#box #email_personalized_news {
+    clear: left;
+    float: left;
+    width: auto;
+}
+
+#box #fileinputs {
+    border: 1px solid blue;
+}
+
+#box #formmsg {
+    display: block;
+    font-size: 15px;
+    margin: 10px;
+    text-align: left;
+    width: 90%;
+}
+
+#box #formmsg #donebutton,
+.reserve input {
+    font-size: 20px;
+}
+
+#box #picture_upload {
+    width: 190px;
+}
+
+#box #user_avatar {
+    border-bottom: 1px solid #aaa;
+    padding: 0 0 10px;
+    position: relative;
+}
+
+#box #username_url {
+    color: green;
+    font-weight: 700;
+}
+
+#box h3 {
+    background: #000;
+    color: #fff;
+    font-size: 15px;
+    margin: 0 0 3px;
+    padding: 5px;
+}
+
+#box h4 {
+    font-size: 14px;
+    letter-spacing: 0;
+    margin: 5px;
+}
+
+#box label {
+    border-bottom: 1px solid #aaa;
+    display: block;
+    padding: 10px 5px;
+    position: relative;
+}
+
+#box label input {
+    border: 1px solid #aaa;
+    display: inline;
+    float: right;
+    font-size: 14px;
+    padding: 2px;
+    width: 220px;
+}
+
+#box li a {
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0 10px;
+    text-shadow: #000 0 1px 0;
+}
+
+#box li a:hover {
+    background: #0063dc;
+    text-decoration: none;
+}
+
+#box li#lb_active {
+    background: #ed2024;
+}
+
+#box #submitlogin,
+#box #submitsignup,
+#box #cancel {
+    font-size: 110%;
+    margin: 10px 0 5px 5px;
+    position: relative;
+}
+
+#box p {
+    margin: 10px 5px;
+}
+
+#box small {
+    clear: both;
+    color: #888;
+    display: block;
+    font-size: 11px;
+    margin: 2px 0 0 85px;
+    text-align: left;
+    width: 220px;
+}
+
+#box ul {
+    background: #000;
+    height: 30px;
+    margin: 0 0 10px;
+}
+
+#box ul li {
+    background: #000;
+    color: #fff;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+
+#box #login label {
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+}
+
+#box #loginlastfm {
+    border: 2px solid #dd423a;
+    font-size: 11px;
+    padding: 7px 7px 7px 7px;
+}
+
+#box #logintwitter {
+    border: 2px solid #c0deed;
+    font-size: 11px;
+    margin: 0 0 5px;
+    padding: 7px 7px 7px 7px;
+}
+
+#box #emailsettings input {
+    margin-left: 5px;
+}
+
+#box #emailsettings span {
+    clear: both;
+    display: block;
+    margin: 15px 5px 0;
+}
+
+#box #emailsettings {
+    border: 1px solid #fff;
+}
+
+#box #current_img {
+    float: left;
+    margin: 0 10px 0 5px;
+}
+
+#box #forgot-link {
+    margin-left: 175px;
+    font-size: 11px;
+}
+
+#defaultform .twitter-avatar {
+    border: 1px solid #AAAAAA;
+    margin: 5px 0px;
+    display: inline-block;
+}
+
+#defaultform .twitter-username {
+    margin-left: 10px;
+    font-size: 16px;
+}
+
+#defaultform .twitter-handle {
+    font-size: 10px;
+}
+
+#defaultform .twitter-avatar, #defaultform .twitter-username, #defaultform .twitter-handle {
+    vertical-align: middle;
+}
+
+#container {
+    margin: 0 auto;
+    position: relative;
+    width: 980px;
+    /*padding-top: 5px;*/
+}
+
+#container #content-left .section .act-info-loading h4 {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/icon-loading.gif) center left no-repeat;
+    padding-left: 20px;
+}
+
+.section .fav-pager {
+    width: 500px;
+    margin-left: 70px;
+}
+
+.section a.fav-paging {
+    background: #eee;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 10px 10px 10px 0;
+    padding: 3px;
+}
+
+#container #content-left .section .favcountlist h4,
+#container #content-left .section .friendslist h4 {
+    clear: both;
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 5px;
+}
+
+#container #content-left .section .friendslist h4 {
+    display: inline-block;
+    margin: 0px;
+    margin-top: 2px;
+    margin-left: 5px;
+    letter-spacing: 0px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#container #content-left .section .favcountlist li {
+    float: left;
+    font-size: 12px;
+    position: relative;
+    width: 163px;
+    padding: 5px 0px 0px 5px;
+}
+
+#container #content-left .section .favcountlist li.friend {
+    background: rgb(244,247,175);
+}
+
+#container #content-left .section .favcountlist li a {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+}
+
+#container #content-left .section .favcountlist li a img {
+    float: left;
+    left: 0;
+    margin: 0 5px 5px 0;
+    position: relative;
+    top: 0;
+}
+
+#container #content-left .section .friendslist ul {
+    display: inline-block;
+    overflow: hidden;
+    max-width: 385px;
+    height: 24px;
+    vertical-align: text-bottom;
+}
+
+#container #content-left .section .friendslist li {
+    display: inline-block;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+#container #content-left .section .friendslist li a img {
+    width: 24px;
+    height: 24px;
+    vertical-align: top;
+}
+
+#container #content-left .section .friendslist li a span {
+    display: none;
+}
+
+#container #content-left .section .friendslist a.fav-paging {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    margin-top: 13px;
+    padding: 0px;
+    border: none;
+    font-size: 12px;
+    background: none;
+}
+
+#container #content-left .section .favcountlist li a:active,
+#content-left .section a:active.readpost {
+    position: static;
+    top: 0;
+}
+
+#container #content-left .section .favcountlist li a:hover {
+    border: 0;
+    text-decoration: underline;
+}
+
+#container #content-left .section .favcountlist li > span {
+    display: block;
+    overflow: hidden;
+    padding-left: 38px;
+    position: absolute;
+    top: 0;
+    width: 115px;
+}
+
+#container #content-left .section .favcountlist li a > span {
+    display: inline-block;
+    margin-top: 7px;
+    width: 126px;
+    overflow: hidden;
+    height: 17px;
+}
+
+#container #content-left .section .favcountlist li span.heart {
+    color: rgb(190, 0, 0);
+}
+
+#container #content-left .section .favcountlist,
+#container #content-left .section .friendslist,
+#container #content-left .section .act-info-loading {
+    border-top: 1px solid #ccc;
+    clear: both;
+    display: block;
+    margin: 10px 0 0 72px;
+    padding: 10px 0px;
+    width: 506px;
+    zoom: 1px;
+}
+
+#container #content-left .section .friendslist {
+    position: relative;
+    height: 4px;
+}
+
+#container #content-left .section .more {
+    margin-left: 70px;
+    font-size: 12px;
+    margin-bottom: 23px;
+    display: block;
+}
+
+#container #content-right .fav-stuff li {
+    color: #bbb;
+    font-size: 11px;
+    text-align: right;
+}
+
+#content-left {
+    background: transparent;
+/*    border: 1px solid transparent; */
+    clear: left;
+    float: left;
+/*    margin: 0 0 15px; */
+    min-height: 400px;
+    position: relative;
+    width: 660px;
+}
+
+#content-left.shrink {
+    min-height: 0px;
+}
+
+#content-left #blog #commentlist li {
+    border-bottom: 1px solid #aaa;
+    padding: 10px 0;
+}
+
+#content-left #blog #commentlist li .meta {
+    color: #333;
+    font-size: 11px;
+    margin-bottom: 0;
+}
+
+#content-left #blog #commentlist li span.author {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 0 0 10px;
+}
+
+#content-left #blog #commentlist li.even {
+    background: #eee;
+}
+
+#content-left #blog .blog-post {
+    margin: 0 0 30px;
+}
+
+#content-left #blog .blog-post .feedback {
+    border-top: 1px solid #aaa;
+    padding: 5px 10px;
+}
+
+#content-left #blog .blog-post p {
+    font-size: 13px;
+    margin: 10px;
+}
+
+#content-left #blog h2 {
+    position: relative;
+}
+
+#content-left #blog h2 span {
+    color: #aaa;
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+#content-left #blog-list #heading,
+#content-left #blog h3 {
+    font-size: 15px;
+    font-weight: 700;
+}
+
+#content-left #blog-list td {
+    padding: 3px;
+}
+
+#subpage #faq h3 {
+    border-top: 1px solid #ccc;
+    padding: 20px 0 0;
+}
+
+#subpage #faq img {
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+
+#subpage form input {
+    padding: 2px;
+}
+
+#subpage form label {
+    display: block;
+    margin: 0 0 10px;
+}
+
+#subpage h3 {
+    color: #000;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 20px 10px 0;
+}
+
+#subpage li {
+    list-style: square;
+    margin: 0 0 0 40px;
+    padding: 3px;
+}
+
+#subpage ol li {
+    list-style: decimal;
+}
+
+#subpage p {
+    margin: 5px 10px 10px;
+}
+
+#subpage form {
+    background: #fafafa;
+    border: 1px solid #aaa;
+    font-size: 14px;
+    margin: 10px;
+    padding: 10px;
+}
+
+#contact,
+#contact .standard_form input,
+#contact .standard_form textarea {
+    font-size: 12px;
+    margin: 0 0 10px;
+    text-align: left;
+}
+
+#contact textarea {
+    width: 300px;
+}
+
+#contact h2 {
+    border-bottom: 4px solid #85c441;
+}
+
+#contact input#submit {
+    font-size: 13px;
+    margin-left: 185px;
+    padding: 5px;
+    text-align: center;
+    width: 120px;
+}
+
+#contact label {
+    display: block;
+    float: left;
+    margin: 0 5px 0 10px;
+    text-align: right;
+    width: 180px;
+}
+
+#contact label span {
+    font-size: 11px;
+}
+
+#contact .standard_form textarea {
+    height: 100px;
+    width: 400px;
+}
+
+body #content-left #contact_form input,
+body #content-left #contact_form textarea,
+#contact_subject {
+    font-size: 14px;
+    padding: 3px;
+}
+
+#contact_tips p {
+    background: #fcfaef;
+    border: 1px solid #aaa;
+    font-size: 12px;
+    margin: 10px 20px 0;
+    padding: 10px;
+}
+
+#contact_message {
+    font-size: 15px;
+    margin: 0 0 0 10px;
+}
+
+#content-left #subpage,
+#message span,
+#blog #storycontent p {
+    font-size: 13px;
+}
+
+#content-left #suggest a {
+    background: #fef2eb;
+    color: #000;
+    display: block;
+    font-size: 14px;
+    margin: 20px;
+    padding: 10px;
+}
+
+#content-left #suggest a em {
+    color: #0063dc;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+#content-left #suggest a:hover em {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#content-right #premiere-title {
+    font-weight: bold;
+    border-bottom: 1px solid #DDD;
+    display: block;
+    margin: 6px 0 0;
+    padding: 0 0 0 5px;
+}
+
+#album-premiere {
+    width: 728px;
+    height:250px;
+}
+
+#content-left #suggest a:hover,
+#content-right #get-badge a:hover {
+    background: #f26a21;
+    border: 0;
+}
+
+#content-right #hypem-events a:hover img {
+    border-color: #f26a21;
+}
+
+#content-left #track-notification {
+    background: #FFE379;
+    font-size: 14px;
+    padding: 5px 10px;
+}
+
+#content-left .section a:active,
+#container #content-left .section .favcountlist li a:active img {
+    position: relative;
+    top: 1px;
+}
+
+#content-left .section h3 a {
+    font: 700 20px/25px 'Helvetica', 'Arial', sans-serif;
+}
+
+#content-left .section h3 em a {
+    color: #bbb;
+    font-size: 16px;
+}
+
+#content-left .section h3,
+#content-left #previous-mentions .section h3 {
+    color: #ccc;
+    font: 700 20px/25px 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: -1px;
+    margin-left: 72px;
+    padding-right: 115px;
+    position: relative;
+    text-rendering: optimizeLegibility;
+    text-transform: capitalize;
+}
+
+#content-left .section .tags {
+    margin: 5px 0 0 70px;
+    color: #ccc;
+    width: 500px;
+}
+
+#content-left .section .tags a {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #eee;
+    border-bottom: 1px solid #aaa;
+    border-radius: 5px;
+    border-right: 1px solid #aaa;
+    display: block;
+    float: left;
+    font-size: 12px;
+    margin: 0 8px 8px 0;
+    padding: 1px 4px;
+    text-transform: none;
+}
+
+#content-left .section .tags a.active {
+    background: #333;
+    color: #fff;
+}
+
+#content-left .section.first h3, #content-left .section.first h3 a {
+    font-size: 35px;
+    line-height: 52px;
+}
+
+
+#content-left .section p {
+    color: #555;
+    margin: 5px 0 0 72px;
+    width: 506px;
+    word-wrap: break-word;
+}
+
+#content-left .section p.more-excerpts {
+    margin-top: 10px;
+}
+
+#content-left .section p i {
+    color: #777;
+    font-style: normal;
+}
+
+#content-left .spy-filter #filter li ul a {
+    line-height: 24px;
+    padding: 2px 5px;
+}
+
+#content-left .spy-filter .section:hover .track-info {
+    color: #333;
+}
+
+#contact .standard_form {
+    margin: 20px 0;
+}
+
+#content-left h2 span.mini-pager,
+#featured-blog h2 span {
+    position: absolute;
+    right: 5px;
+}
+
+#content-left h2 {
+/*    border-bottom: 4px solid #84c441; */
+    padding: 20px 5px 10px 10px;
+    position: relative;
+}
+
+#content-left p.twitter_contributors {
+    height: 27px;
+}
+
+#content-left,
+#content-right {
+    text-align: left;
+}
+
+#content-right {
+    float: right;
+    margin: 0 0 0px;
+    padding: 0;
+    width: 300px;
+    /*position: absolute;
+    top: 0px;
+    right: 0px;*/
+    /*margin-top: -165px;*/
+    padding-bottom: 314px;
+}
+
+#content-right #about-blog {
+    margin: 0 0 30px;
+    padding: 0 0 5px;
+}
+
+#content-right #about-blog #feed,
+#merch .shirt .submit {
+    vertical-align: bottom;
+}
+
+#content-right #about-hype {
+    height: 130px;
+    margin: 0 0 30px;
+}
+
+#content-right #about-us {
+    height: 200px;
+}
+
+#content-right #about-us img {
+    border: 1px solid #ccc;
+    float: left;
+    margin: 0 5px 5px 0;
+}
+
+#content-right #about-us li {
+    color: #666;
+    float: left;
+    font-size: 12px;
+    height: 60px;
+    width: 155px;
+}
+
+#content-right #current-hype a li {
+    color: #222;
+}
+
+#content-right #current-hype ul li a em {
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+#content-right #current-hype ul li {
+    display: inline;
+    font-size: 13px;
+    line-height: 1.1em;
+    margin: 0 5px 2px 0;
+}
+
+#content-right #current-hype ul li.hyped-1 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#content-right #hyped_artists_list {
+    text-transform: capitalize;
+}
+
+#content-right #current-hype ul li.hyped-2,
+p#message-dashboard span,
+#blogquote span {
+    font-size: 15px;
+}
+
+#content-right #current-hype ul li.hyped-4 {
+    font-size: 12px;
+}
+
+#content-right #current-hype,
+#content-right #radio-sidebar,
+#content-right #radio-archive,
+#content-right #twitter-score {
+    background: #E0F3FB;
+    border-color: #E0F3FB;
+}
+
+#content-right #current-hype-updated {
+    margin: 3px 0 12px;
+    text-align: right;
+}
+
+#content-right #feeds ul li a:hover {
+    background: #c1e5f6 url(http://static-ak.hypem.net/rev_1320095546/images/icon-feed.gif) left center no-repeat;
+    border: 0;
+    text-decoration: underline;
+}
+
+#content-right #followers img,
+#content-right #following img {
+    height: 40px;
+    width: 40px;
+}
+
+#content-right #followers ul li,
+#content-right #following ul li {
+    float: left;
+    margin: 0 10px 10px 0;
+}
+
+#content-right #followers,
+#content-right #following {
+    clear: left;
+}
+
+#content-right #get-badge a span,
+#content-right #zeitgeist-link span,
+#content-right #hypem-events {
+    margin-bottom: 15px;
+}
+
+#content-right #hypem-events a span {
+    color: #0063dc;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+#content-right #hypem-events .cover {
+    width: 50px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    float: left;
+    border: 5px solid #FEF2EB;
+}
+
+#content-right #hypem-events a .release {
+    font-size: 10px;
+    font-weight: 400;
+}
+
+#content-right #get-badge a,
+#content-right a#zeitgeist-link,
+#content-right #hypem-events a {
+    clear: both;
+    color: #333;
+    display: block;
+    font-size: 12px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#content-right #hypem-events a {
+    margin-bottom: 0px;
+    padding: 5px 0 0;
+}
+
+#content-right a:hover#zeitgeist-link span {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#content-right #get-badge a:hover span {
+    color: inherit;
+}
+
+#content-right #get-badge h2 span {
+    position: relative;
+    right: 0;
+    top: 0;
+}
+
+#content-right #just-searched li {
+    border-bottom: 1px solid #efefef;
+    color: #bbb;
+    font-size: 11px;
+    margin: 0 0 2px;
+    padding: 0 0 2px;
+    text-align: right;
+}
+
+#content-right #just-searched li a,
+#content-right .fav-stuff li a {
+    float: left;
+    font-size: 13px;
+}
+
+#content-right #news {
+    background: #fff;
+    border: 1px solid #fff;
+    margin-top: 10px;
+}
+
+#content-right #your-site {
+    margin: 8px;
+}
+
+#content-right #just-searched {
+    margin: 8px;
+}
+
+#content-right #news h3 {
+    margin-left: 8px;
+}
+
+#content-right #news ul {
+    padding: 5px 8px 0;
+}
+
+#content-right #news ul li a,
+#content-right #radio-archive ul li a {
+    border-bottom: 0;
+    margin: 0;
+}
+
+#content-right #news ul li,
+#radio-archive ul li {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#content-right #press li,
+#content-right #thank-you li {
+    list-style: square;
+    margin: 0 0 0 20px;
+}
+
+#content-right #sidebar-stats {
+    border: none;
+    font-size: 11px;
+    line-height: 1.4em;
+    padding: 0;
+    margin: 10px 0 20px 0px;
+    border-top: 0;
+/*    padding-top: 5px;*/
+}
+
+
+#sidebar-stats #sidebar-top-follow a em {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-follow.png) center 3px no-repeat;
+    height: 24px;
+}
+
+#sidebar-stats .section .album-art {
+    top: 20px;
+}
+
+#sidebar-stats ul li.bottom {
+    height: 23px;
+    padding: 5px 0 0;
+    width: 300px;
+}
+
+#sidebar-stats #sidebar-top-follow a.unfollow em {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-unfollow.png) center 3px no-repeat;
+}
+
+#sidebar-stats #sidebar-top-follow a.follow {
+}
+
+#sidebar-stats a#top-settings em {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-settings.png) center 2px no-repeat;
+}
+
+#sidebar-stats h3 {
+    font-size: 18px;
+    padding: 0 0 0;
+}
+
+#sidebar-stats h3 a {
+    color: #000;
+    line-height: 1.5em;
+    margin: 0 0 10px;
+}
+
+#sidebar-stats ul {
+    clear: both;
+    height: 55px;
+    margin: 0 0 5px;
+    position: relative;
+    padding: 0;
+}
+
+#sidebar-stats li {
+    color: #000;
+    display: block;
+    float: left;
+    width: 80px;
+}
+
+#content-right .user-stats li {
+    width: 65px;
+}
+
+#sidebar-stats #sidebar-top-follow {
+    width: 75px;
+}
+
+#sidebar-stats li em {
+    color: #333;
+    display: block;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+#sidebar-stats li a {
+}
+
+#sidebar-stats li a:hover {
+    color: #0063dc;
+    text-decoration: underline;
+}
+
+#sidebar-stats li a:hover em {
+    text-decoration: none;
+}
+
+.blog-stats li {
+    float: left;
+    height: 42px;
+    margin: 0;
+    text-align: center;
+}
+
+.blog-stats li.blog-stats-middle {
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+#content-right .section.fast-forward-launch {
+    background: #FEF2EB;
+    padding: 10px;
+    border: none;
+    text-align: right;
+    margin: 50px 0 5px 0;
+}
+
+.fast-forward-launch .logo {
+    position: relative;
+    margin-top: -50px;
+    display: block;
+}
+
+.fast-forward-launch .description {
+    font-size: 16px;
+}
+
+#content-right #sponsors #hype-badge {
+    border: 1px solid #666;
+    float: right;
+    margin: 10px;
+}
+
+#content-right #tour-dates {
+    background: #fef2eb;
+    border-color: #fef2eb;
+    clear: both;
+}
+
+#content-right #tour-dates h3 {
+    color: #000;
+    text-transform: uppercase;
+    line-height: 21px;
+}
+
+#content-right #tour-dates ul li a .city {
+    background: #fef2eb;
+    color: #000;
+    padding-left: 5px;
+    position: absolute;
+    right: 0;
+}
+
+#content-right #tour-dates ul li a .dates {
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+#content-right #news ul li a .dates,
+#content-right #radio-archive ul li a .dates {
+    text-transform: uppercase;
+}
+
+#content-right #tour-dates ul li a .perf,
+#content-right #news ul li a .title,
+#content-right #radio-archive ul li a .title,
+#message p span#next-search a {
+    color: #666;
+}
+
+#content-right #tour-dates ul li a {
+    border-bottom: 1px solid #FCD9C6;
+}
+
+#content-right #tour-dates ul li a,
+#content-right #news ul li a,
+#content-right #radio-archive ul li a,
+#no-local-tours {
+    display: block;
+    font-size: 12px;
+    padding: 4px 0;
+}
+
+#songkick a {
+    color: #000;
+    display: block;
+    height: 20px;
+    margin: 5px 0 0;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+#songkick a:hover span {
+    background: #fef2eb url(http://static-ak.hypem.net/rev_1330987235/images/logo-songkick.png) no-repeat;
+}
+
+#songkick span {
+    background: #fef2eb url(http://static-ak.hypem.net/rev_1330987235/images/logo-songkick.png) no-repeat;
+    cursor: hand;
+    display: block;
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 0;
+    width: 109px;
+}
+
+#songkick a:hover {
+    background: none;
+    color: #000;
+    text-decoration: underline;
+}
+
+#content-right #twitter-score {
+    background: #E0F3FB url(http://static-ak.hypem.net/rev_1330987235/images/twitter-small.png) right 0 no-repeat;
+}
+
+#content-right .fav-stuff {
+    border-bottom: 1px solid #fff;
+    border-top: 1px solid #fff;
+    clear: both;
+    margin-bottom: 10px;
+}
+
+#content-right .fav-stuff h3,
+#header #search form,
+ul.tabbernav li,
+#language li {
+    display: inline;
+}
+
+#header #search form {
+    margin-right: 5px;
+}
+
+#content-right .fav-stuff ul li .me {
+    margin-left: 23px;
+}
+
+#content-right .fav-stuff ul li,
+#content-right #radio-archive ul li {
+    border-bottom: 1px solid #ccc;
+    font-size: 12px;
+    padding: 3px 0;
+}
+
+#content-right .fav-stuff ul li.show_more_link {
+    border-bottom: 0;
+}
+
+#content-right .fav-stuff ul li.show_more_link a {
+    float: right;
+    font-size: 11px;
+}
+
+#content-right .section {
+    background: none;
+    border: 10px solid #fff;
+    border-width: 8px 10px;
+    margin: 0 0 10px;
+    padding-bottom: 0;
+    padding-top: 0px;
+}
+
+#content-right .cmj {
+    margin-bottom: 20px;
+}
+
+#content-right .spy-countries a img,
+#sidebar-spy-countries img {
+    margin-right: 7px;
+}
+
+#content-right a#zeitgeist-link {
+    background: #eaffd2;
+}
+
+#content-right a:hover#zeitgeist-link {
+    background: #85C441;
+    border: 0;
+}
+
+#content-right a:hover.fav-on span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-sub-small.png) -16px -13px no-repeat;
+    color: #277be1;
+}
+
+#content-right h2,
+.badge-stickers h2 {
+    font-size: 14px;
+    background: #fff;
+    border-bottom: 0;
+    color: #111;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+#content-right h3,
+#content-right h3 a {
+    font: 700 14px 'Helvetica', 'Arial', sans-serif;
+}
+
+#content-right li#sidebar-top-follow a:active {
+    background: #ccc;
+}
+
+#content-right #current-hype .section {
+    margin-left: 10px;
+}
+
+#content-wrapper {
+    background: #fff  url(http://static-ak.hypem.net/rev_1330987235/images/phonograph-small.png) right bottom no-repeat;
+    min-height: 500px;
+    padding-top: 10px;
+    margin-bottom: -20px;
+}
+
+#content-right #showall-toggle {
+    clear: both;
+    display: block;
+    float: right;
+    margin: 0 10px 0 0;
+    position: relative;
+    top: -5px;
+}
+
+#events #artists-h3,
+#tracks-h3 {
+    color: #000;
+    display: inline;
+    font-size: 20px;
+    margin: 0 0 0 365px;
+    padding: 0px;
+}
+
+#events .section {
+    border: 0;
+    float: right;
+    height: 60px;
+    margin: 12px 0 0;
+    padding-top: 0px;
+    position: relative;
+    width: 510px;
+}
+
+#events .section h3 {
+    margin: 0 0 0 60px;
+    padding: 0;
+}
+
+#events h2 {
+    background: none;
+    border: 0;
+    color: #000;
+    float: none;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1em;
+    margin: 12px 0 0;
+    padding: 0;
+    text-align: right;
+    width: 450px;
+}
+
+#events h2 a {
+    color: #0063dc;
+    font-size: 21px;
+    margin: 0;
+}
+
+#events h2.stage {
+    background: #84c441;
+    color: #fff;
+    margin: 20px 0;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+}
+
+#events h2.stage.sxsw {
+    background: #151515;
+}
+
+#events {
+    width: 100%;
+}
+
+.sxsw-info a {
+    color: #0063DC;
+}
+
+#events #player {
+    display: block;
+    height: 48px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 48px;
+}
+
+#events #tracks-h3 {
+    margin: 0 0 0 148px;
+}
+
+#events .fav-on,
+#events .fav-off {
+    margin-right: 3px;
+}
+
+#events .meta {
+    background: none;
+    color: #aaa;
+    font: 700 15px 'Helvetica', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-left: 60px;
+    width: 450px;
+}
+
+#events .meta a {
+    color: #888;
+}
+
+#events .sxsw-artist {
+    clear: left;
+    float: left;
+    height: 50px;
+    margin: 12px 0 0;
+    text-align: right;
+    width: 450px;
+}
+
+#events .sxsw-artist .time {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    left: 5px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 35px;
+}
+
+#events .sxsw-artist h3 {
+    font-size: 14px;
+    padding: 4px 0 0;
+}
+
+#events .sxsw-event {
+    border-bottom: 1px solid #aaa;
+    height: 85px;
+    padding: 10px 0 0;
+    position: relative;
+}
+
+#events .sxsw-event.last {
+    border-bottom: none;
+}
+
+#content-left .sxsw-event .section a:active {
+    position: absolute;
+}
+
+#events-remote {
+    padding: 5px 0 0;
+}
+
+#fav_searches_rest,
+#fav_blogs_rest {
+    border: 1px solid transparent;
+}
+
+#fav_searches_rest a {
+    color: #0063DC;
+}
+
+#top-notice {
+    background: #ffffe1;
+    font: 1.1em 'Helvetica', 'Arial', sans-serif;
+    padding: 5px;
+    text-align: center;
+}
+
+#top-notice #hide-this {
+    clear: none;
+    float: right;
+    padding-right: 5px;
+    position: relative;
+    top: -3px;
+}
+
+#top-notice .close {
+    line-height: 20px;
+    color: #000;
+}
+
+#top-notice .close:hover {
+    text-decoration: none;
+    color: #999;
+}
+
+#top-notice .close img {
+    vertical-align: text-bottom;
+    margin-right: 2px;
+}
+
+#header {
+    background: #83c441;
+    height: 42px;
+    margin-bottom: 33px;
+    position: relative;
+    text-align: right;
+    z-index: 100;
+}
+
+#header-inner {
+    margin: 0 auto;
+    position: relative;
+    width: 980px;
+}
+
+#header #search {
+    color: #fff;
+    font-size: 14px;
+    float: right;
+    font-weight: 700;
+    height: 22px;
+    padding: 10px 5px 0 0px;
+    width: 250px;
+    z-index: 100;
+}
+
+#header #search #g,
+#contact_submit {
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin: 0;
+    outline: 0;
+    vertical-align: top;
+}
+
+#header #search #g {
+     background: #EDEDED;
+     height: 20px;
+     padding: 2px 5px;
+}
+
+#header #search #g:hover {
+    background: #111;
+    color: #FFF;
+}
+
+#contact_submit {
+    background: url(http://static-ak.hypem.net/rev_1320095545/images/bg-button.gif) bottom;
+    height: 21px;
+}
+
+#header #search #q {
+    border: none;
+    font-size: 12px;
+    height: 18px;
+    padding-left: 5px;
+    width: 150px;
+    vertical-align: top;
+}
+
+#header #search #q:focus {
+    outline: none;
+}
+
+#contact input {
+    border: 1px solid #ccc;
+    border-bottom-color: #999;
+    border-right-color: #999;
+    font-size: 12px;
+    height: 17px;
+    padding-left: 5px;
+    vertical-align: top;
+}
+
+#header #search #shuf {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-shuffle.png) left top;
+    width: 25px;
+    height: 20px;
+    display: inline-block;
+}
+
+#header #search #shuf:hover {
+    background-position: 0px -20px;
+}
+
+#twitter-board li a:hover img,
+#active-users li a:hover img,
+#sidebar-spy li a:hover img {
+    border: 1px solid #0063dc;
+}
+
+#header .menu {
+    float: left;
+}
+
+.user-menu {
+    position: absolute;
+    right: 0px;
+    width: 300px;
+
+    text-align: left;
+    width: 300px;
+    z-index: 100;
+
+}
+
+.user-menu .logged-out {
+    height: 32px;
+    display: inline-block;
+    line-height: 32px;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+#player-container a.logged-out:hover {
+    color: #FFF;
+}
+
+
+
+
+#menu-username ul {
+    background: transparent;
+    display: none;
+    right: 0px;
+    top: 32px;
+    position: absolute;
+    width: 115px;
+    z-index: 100;
+}
+
+#menu-username ul li {
+    width: 115px;
+}
+
+#menu-username ul li a {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    display: block;
+    font-size: 12px;
+    line-height: 2.5em;
+    padding: 0 5px;
+    text-align: left;
+    width: 105px;
+}
+
+
+
+
+
+#player-container .user-menu ul li a:hover {
+    background: #0063dc;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+#menu-friends {
+    width:200px;
+    float:left;
+}
+#menu-friends:hover ul {
+    padding: 0 0 4px 0;
+    display: block;
+}
+
+
+
+
+#menu-item-friends {
+    float:left;
+    width: 170px;
+    padding: 0 3px;
+    margin:0px;
+    background:none;
+}
+
+
+
+#menu-item-friends a {
+}
+
+#menu-item-friends img {
+    margin: 4px 0px 0 1px;
+}
+
+
+
+
+#menu-friends ul {
+    float:left;
+    background: transparent;
+    display: none;
+    width: 200px;
+    z-index: 100;
+}
+
+#menu-friends ul li {
+    width: 170px;
+    height: 54px;
+}
+
+#menu-friends ul li a img {
+    float: left;
+}
+
+#menu-friends .friends-name {
+    float: left;
+    display:block;
+    width:90px;
+    height: 24px;
+    font-weight:bold;
+    padding: 0 0 0 5px;
+}
+
+
+#menu-friends .friends-when {
+    float: left;
+    display:block;
+    width:60px;
+    height: 24px;
+    font-size: 10px;
+    color: #CCC;
+}
+
+
+#menu-friends .friends-what {
+    float: left;
+    display:block;
+    width:150px;
+    padding-top: 4px;
+    height: 24px;
+    font-size: 11px;
+/*    color: #CCC;*/
+}
+
+#menu-friends ul li a {
+    border-bottom: 0;
+    border-top: 1px solid #fff;
+    display: block;
+    font-size: 12px;
+    line-height: 18px;
+    padding: 5px 5px 0 5px;
+    text-align: left;
+    width: 180px;
+    height: 54px;
+}
+
+
+
+
+
+#menu-username {
+    float:right;
+}
+
+#menu-username:hover ul {
+    padding: 0 0 4px 0;
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+#menu-item-latest {
+    width: 66px;
+}
+
+#menu-item-latest a {
+    /*width:100px;*/
+    width: 42px;
+}
+
+#menu-item-latest ul {
+    display:none;
+    position:relative;
+    z-index:200;
+    background:#222;
+    width: 90px;
+}
+
+#menu-item-latest:hover ul {
+    display:block;
+}
+
+#menu-item-latest #menu-item-latest-submenu li {
+    text-decoration:none;
+    font-weight:normal;
+    color:#ddd;
+    background:#222;
+    z-index:200;
+    display:inline-block;
+    width:100px;
+    padding:0px;
+    height: 30px;
+}
+
+
+#header .menu #menu-item-latest #menu-item-latest-submenu li.menu-divider {
+    padding:0px 3px 0px 7px;
+    width:90px;
+    height: 20px;
+    font-size:20px;
+    line-height:20px;
+    font-weight:bold;
+    text-align:center;
+    background: #111;
+}
+
+
+#header .menu #menu-item-latest #menu-item-latest-submenu li a {
+    padding:0px 3px 0px 7px;
+    width:90px;
+    height: 30px;
+    font-size:11px;
+    line-height:30px;
+    font-weight:normal;
+    text-align:left;
+    background: #111;
+}
+
+#header .menu #menu-item-latest #menu-item-latest-submenu li a:hover {
+    background: #444;
+}
+
+
+
+
+
+
+
+
+
+
+/* So this is actually identical to the Latest submenu, we'll need to 
+    properly not make this duplicated css... */
+#menu-item-popular {
+    width: 72px;
+}
+
+#menu-item-popular a {
+    /*width:100px;*/
+    width: 48px;
+}
+
+#menu-item-popular ul {
+    display:none;
+    position:relative;
+    z-index:200;
+    background:#222;
+    width: 90px;
+}
+
+#menu-item-popular:hover ul {
+    display:block;
+}
+
+#menu-item-popular #menu-item-popular-submenu li {
+    text-decoration:none;
+    font-weight:normal;
+    color:#ddd;
+    background:#222;
+    z-index:200;
+    display:inline-block;
+    width:100px;
+    padding:0px;
+    height: 30px;
+}
+
+#header .menu #menu-item-popular #menu-item-popular-submenu li a {
+    padding:0px 3px 0px 7px;
+    width:90px;
+    height: 30px;
+    font-size:11px;
+    line-height:30px;
+    font-weight:normal;
+    text-align:left;
+    background: #111;
+}
+
+#header .menu #menu-item-popular #menu-item-popular-submenu li a:hover {
+    background: #444;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+#header .menu li a,
+#footer .menu li a {
+    display: block;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    height: 100%;
+    padding: 0 12px;
+    text-align: center;
+    text-decoration: none;
+}
+
+#header .menu li a .★ {
+    color: #000;
+    margin-right: 5px;
+    display: inline-block;
+    line-height: 41px;
+}
+
+#header .menu li a:hover .★,
+#header .menu li.active a .★ {
+    color: red;
+}
+
+#header .menu li a {
+    color: #000;
+    line-height: 42px;
+}
+
+#footer .menu li a {
+    line-height: 33px;
+    color: #fff;
+    background: #111;
+    text-shadow: #000 0 1px 0;
+}
+
+#header .menu li span {
+    float: left;
+    line-height: 28px;
+}
+
+#header .menu li,
+#footer .menu li {
+    color: #ddd;
+    display: block;
+    float: left;
+}
+
+#header .menu li {
+    height: 42px;
+}
+
+#footer .menu li {
+    height: 31px;
+}
+
+#header .menu li.active a {
+    background: #111;
+    color: #fff;
+}
+
+#header .menu #menu-item-back {
+    display:none;
+}
+
+
+.user-menu a,
+#footer .menu li.user-menu a,
+#footer .menu li#hmn,
+#footer .menu li#hmn a {
+    padding: 0 12px;
+    width: auto;
+}
+
+.user-menu a.menu-signup {
+    margin-left: 40px;
+}
+
+.user-menu a.menu-small:hover {
+    border-bottom: 3px solid #fff;
+}
+
+.user-menu a.user {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/filter-arrow.png) right -32px no-repeat;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    height: 32px;
+    line-height: 32px;
+    margin: 0 0px 0 10px;
+    padding-left: 5px;
+    padding-right: 15px;
+}
+
+.user-menu a.user.active {
+    background: #ed2024 url(http://static-ak.hypem.net/rev_1330987235/images/filter-arrow.png) right -32px no-repeat;
+}
+
+#player-container .user-menu a.user.active:hover {
+    background-position: right -32px;
+}
+
+#player-container .user-menu a.user:hover {
+    background-position: right 0px;
+    color: #FFF;
+    text-decoration: none;
+}
+
+.user-menu a.user img {
+    display: inline-block;
+    margin: 4px 4px 0 5px;
+    vertical-align: top;
+}
+
+.user-menu a {
+    background: #333;
+    position: relative;
+    z-index: 100;
+}
+
+#header .menu,
+#footer .menu {
+    text-align: left;
+}
+
+#header .menu {
+    height: 42px;
+}
+
+#footer .menu {
+    height: 31px;
+}
+
+.user-menu a.active {
+    background: #ed2024;
+}
+
+/* menu hover */
+#header .menu li:hover a,
+#footer .menu li:hover a {
+    background: #111;
+    color: #fff;
+}
+
+#footer {
+    background: #84c441 url(http://static-ak.hypem.net/rev_1320357338/images/bg-footer.gif) repeat-x;
+    clear: both;
+    position: relative;
+    text-align: left;
+}
+
+#footer .menu {
+    float: left;
+    width: 100%;
+}
+
+#footer .menu li.active a,
+#footer .menu li.user-menu a.active {
+    background: #ed2024;
+    border-top: 3px solid #ed2024;
+}
+
+#footer a#heart {
+    position: absolute;
+    right: 20px;
+    top: -30px;
+}
+
+#footer a#heart:hover {
+    background: none;
+    border: 0;
+}
+
+#footer p {
+    clear: both;
+    padding: 15px 0 0;
+    text-align: left;
+}
+
+#footer p a {
+    color: #111;
+    font-weight: 700;
+}
+
+#footer p a:hover {
+    color: #FFF;
+    text-decoration: none;
+    text-shadow: 0 0 10px #FFF;
+}
+
+#footer ul {
+    margin: 0 auto;
+    width: 900px;
+}
+
+#footer-inner {
+    margin: 0 auto;
+    position: relative;
+    width: 980px;
+}
+
+#sticky {
+    width: 980px;
+}
+
+#sticky-anchor {
+    clear: both;
+    position: relative;
+}
+
+#player-container.stick {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+}
+
+#player-container.yellow_msg {
+    top: 66;
+}
+
+
+#sticky.stick #search {
+    background: #000;
+    height: 23px;
+    top: 0;
+}
+
+#submenu {
+    font-size: 13px;
+    height: 29px;
+    margin-top: 0px;
+    padding: 0 5px 0 110px;
+    position: relative;
+    z-index: 99;
+}
+
+#submenu a {
+    border-bottom: 4px solid #fff;
+    color: #222;
+    display: block;
+    margin: 0 10px 0 0;
+    padding: 5px 0 2px;
+}
+
+/*#submenu a:hover {
+    background: none;
+    border-bottom: 4px solid #ccc;
+    color: #000;
+    text-decoration: none;
+}*/
+
+#submenu a#shuffle-songs {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/icon-shuffle-white.gif) right 0 no-repeat;
+    border: none;
+    display: block;
+    padding: 2px 27px 0 10px;
+    position: relative;
+    right: 0;
+}
+
+#submenu a#shuffle-songs.item {
+    margin-left: -110px;
+}
+
+#submenu .count {
+    color: white;
+    font-weight: bold;
+    background: #FF0000;
+    -webkit-border-radius: 17px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    position: absolute;
+    padding: 0px 4px;
+    top: -12px;
+    right: 0px;
+    font-size: 10px;
+    min-width: 10px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+}
+
+#submenu a:hover .count {
+    text-decoration: underline;
+}
+
+#submenu li {
+    float: left;
+    display: block;
+    position: relative;
+}
+
+#submenu li a {
+    position: relative;
+}
+
+#submenu li#submenu-filter {;
+    display: block;
+    position: absolute;
+    left: 0px;
+    text-align: left;
+    top: 5px;
+}
+
+#submenu-filter:hover {
+    cursor: pointer;
+}
+
+#submenu-filter li {
+    float: none;
+    margin-right: 0;
+}
+
+#submenu li i, #submenu a {
+    border: 1px solid #DDD;
+    display: block;
+    font-size: 15px;
+    font-style: normal;
+    height: 18px;
+    margin: 0 10px 0 0;
+    padding: 5px 15px;
+    background: white;
+    color: black;
+}
+
+#submenu li i {
+    background: #F4F4F4;
+    border-bottom: 1px solid #F4F4F4;
+    font-weight: 700;
+}
+
+#submenu-filter li a {
+    border: none;
+    border-bottom: 1px solid #333;
+    display: block;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+    padding: 4px 25px 4px 10px;
+}
+
+#submenu-filter li a:hover {
+    background: #ccc url(http://static-ak.hypem.net/rev_1330987235/images/check.png) right center no-repeat;
+    border-bottom: 1px solid #333;
+    color: #000;
+    text-decoration: underline;
+}
+
+#submenu-filter li a#submenu-filter-active {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/check.png) right center no-repeat;
+    font-weight: 700;
+}
+
+#submenu-filter-active:hover {
+    text-decoration: none;
+}
+
+#submenu-filter span {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px 5px 5px 8px;
+    font-size: 15px;
+}
+
+#submenu-filter:hover span {
+    background: #666;
+    color: #fff;
+}
+
+#submenu-filter ul {
+    background: #fff;
+    border: 2px solid #666;
+    border-width: 3px 3px 2px;
+    display: none;
+    position: relative;
+    z-index: 999;
+}
+
+#submenu-filter:hover ul {
+    display: block;
+}
+
+#submenu-filter li ul li {
+    float: left;
+}
+
+.paginator {
+    border-top: 1px solid #ddd;
+    text-align: center;
+    position: relative;
+    float:left;
+    padding: 20px 0 20px 0;
+}
+
+.paginator a,
+.paginator span {
+    font-weight: 700;
+    border: 1px solid #ddd;
+    display: inline-block;
+    font-size: 14px;
+
+/*
+    height: 28px;
+    line-height: 30px;
+*/
+    padding: 6px 0 5px 0;
+    margin: 0px 5px 0px 5px;
+    text-align: center;
+    width: 30px;
+}
+
+.paginator a:hover {
+    background: #EEE;
+    border: 1px solid #EEE;
+}
+
+
+.paginator span {
+    background: #DDD;
+}
+
+.paginator a.next {
+    position: absolute;
+    right: 0px;
+    padding: 0 10px;
+    margin: 0px 0px 0px 5px;
+    padding: 6px 6px 5px 10px;
+    width: auto;
+}
+
+.paginator.infinite a.next {
+
+}
+
+.paginator span.break {
+    background: #fff;
+    border: 0;
+    width: auto;
+}
+
+.paginator strong {
+    font-size: 14px;
+    left: 45px;
+    position: absolute;
+    top: 28px;
+}
+
+#map {
+    display: block;
+    height: 313px;
+    position: relative;
+    width: 631px;
+}
+
+#map #map-s1 {
+    height: 23px;
+    left: 268px;
+    top: 179px;
+    width: 204px;
+}
+
+#map #map-s2 {
+    height: 23px;
+    left: 276px;
+    top: 214px;
+    width: 238px;
+}
+
+#map #map-t {
+    height: 114px;
+    left: 5px;
+    top: 48px;
+    width: 617px;
+}
+
+#map #map-u {
+    height: 56px;
+    left: 83px;
+    top: 249px;
+    width: 235px;
+}
+
+#map #map-u:hover,
+#map #map-t:hover,
+#map #map-s1:hover,
+#map #map-s2:hover {
+    background: transparent;
+    border: 2px solid #97cf5b;
+}
+
+#map a {
+    display: block;
+    position: absolute;
+}
+
+#merch .shirt {
+    background: #eee;
+    border: 5px solid #ddd;
+    float: left;
+    margin: 0 20px 20px;
+    padding: 0 0 5px;
+    width: 429px;
+}
+
+#merch .shirt b {
+    font-size: 16px;
+    margin: 0 7px;
+}
+
+#merch .shirt img {
+    border-bottom: 5px solid #ddd;
+    margin: 0 0 5px;
+}
+
+#merch h3 {
+    clear: both;
+    font-size: 15px;
+    margin: 20px 0;
+}
+
+#merch p {
+    font-size: 12px;
+    text-align: left;
+}
+
+#merch p.reserve {
+    background: #eee;
+    border: 3px solid #ddd;
+    font-size: 20px;
+    padding: 5px;
+    text-align: center;
+}
+
+#message #player {
+    display: none;
+    float: left;
+    margin: 42px 0 0;
+}
+
+#message .blog-minilink {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+}
+
+#message a.follow em {
+    font-style: normal;
+    font-weight: 700;
+}
+
+#message a.follow,
+#message a.fav-on,
+#message a.fav-off {
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/bg-button.png) top repeat-x;
+    border: 1px solid #666;
+    border-radius: 3px;
+    font-size: 12px;
+    padding: 3px 5px;
+    position: relative;
+    top: -3px;
+}
+
+#message,
+#message-refer {
+    font-weight: 700;
+    /*height: 160px;*/
+    line-height: 23px;
+    /*padding: 0px 10px 0px 10px;*/
+    position: relative;
+    text-align: left;
+    /*width: 711px;*/
+    float: left;
+}
+
+#player-container {
+/*    border-bottom: 1px solid #272727;*/
+    background: #111;
+    color: #fff;
+    height: 32px;
+    left: 0;
+    line-height: 20px;
+    position: absolute;
+    top: 42px;
+    /*top:66px; */
+    width: 100%;
+    z-index: 100;
+}
+
+#player-links, #share-links {
+    /*box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.25);*/
+    display: inline-block;
+    font-size: 12px;
+    float: left;
+    line-height: 32px;
+    position: absolute;
+    text-align: left;
+    z-index: 1000;
+    padding: 10px 0px;
+}
+
+#player-links .arrow, #share-links .arrow {
+    border: 8px solid transparent;
+    border-bottom-color: #ccc;
+    width: 0px;
+    height: 0px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#player-links .content, #share-links .content {
+    height: 24px;
+    width: 121px;
+    background: #ccc;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#player-links .content > *, #share-links .content > * {
+    margin: 2px;
+}
+
+#player-container #player-nowplaying a:hover {
+    background: none;
+    color: #0063dc;
+    text-decoration: underline;
+}
+
+#player-container a {
+    color: #fff;
+}
+
+#player-inner {
+    height: 32px;
+    margin: 0 auto;
+    position: relative;
+    text-align: left;
+    width: 980px;
+}
+
+#player-controls:hover #player-timebar {
+    display: block;
+}
+
+#player-links a, #share-links a {
+    /*border-right: 1px solid #252525;*/
+    display: block;
+    float: left;
+}
+
+#player-links a.store {
+    color: #000;
+    display: block;
+    font-size: 1px;
+    height: 32px;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    width: 26px;
+}
+
+#player-links a.store span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) 5px 0 no-repeat;
+    cursor: hand;
+    display: block;
+    height: 18px;
+    left: 0;
+    margin: 8px 0 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#player-links a.store:hover {
+    background: none;
+    border-bottom: 0;
+}
+
+#player-links a.amazon:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) 5px -38px no-repeat;
+}
+
+#player-links a.emusic {
+    width: 54px;
+}
+
+#player-links a.emusic span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -103px 0 no-repeat;
+}
+
+#player-links a.emusic:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -103px -38px no-repeat;
+}
+
+#player-links a.fbk span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -265px 0 no-repeat;
+}
+
+#player-links a.fbk:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -265px -38px no-repeat;
+}
+
+#player-links a.itunes {
+    width: 54px;
+}
+
+#player-links a.itunes span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -50px 0 no-repeat;
+}
+
+#player-links a.itunes:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -50px -38px no-repeat;
+}
+
+#player-links a.read span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -157px 0 no-repeat;
+}
+
+#player-links a.read:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -157px -38px no-repeat;
+}
+
+#player-links a.twit {
+    width: 70px;
+}
+
+#player-links a.twit span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -197px 0 no-repeat;
+    height: 32px;
+    margin: 7px 0 0;
+}
+
+#player-links a.twit:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-links.png) -197px -38px no-repeat;
+}
+
+#player-links iframe {
+    float: left;
+    margin: 6px 6px 0;
+}
+
+#player-controls {
+    float: left;
+    height: 32px;
+    position: relative;
+    width: 735px;
+}
+
+#player-controls.disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+#player-controls.disabled:hover #player-timebar {
+    display: none;
+}
+
+#player-nowplaying {
+    float: left;
+    font-size: 14px;
+    height: 30px;
+    line-height: 32px;
+    padding: 0 10px 0 0px;
+    position: relative;
+    text-align: left;
+    width: auto;
+    max-width: 575px;
+    overflow: hidden;
+}
+
+#player-nowplaying .share {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-share-player.png) left top no-repeat;
+    cursor: pointer;
+    display: inline-block;
+    height: 32px;
+    width: 32px;
+    margin-left: 5px;
+}
+
+#player-nowplaying a.read {
+    color: #eee;
+    font-size: 11px;
+    font-weight: 400;
+    padding: 0 5px;
+    line-height: 35px;
+}
+
+#player-page {
+    background: #84c441;
+    height: 13px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    top: 32px;
+    visibility: hidden;
+    width: 300px;
+}
+
+#player-page a img {
+    margin: 3px 0 0 5px;
+}
+
+#player-progress-loading {
+    background: #333;
+    height: 8px;
+    left: 0;
+    position: absolute;
+    z-index: 5;
+}
+
+#player-progress-outer {
+    border: 1px solid #333;
+    height: 8px;
+    left: 50px;
+    position: absolute;
+    top: 11px;
+    width: 424px;
+}
+
+#player-progress-playing {
+    background: #84c441;
+    height: 8px;
+    left: 0;
+    position: absolute;
+    z-index: 9;
+}
+
+#player-time-position {
+    color: #fff;
+    font-weight: 700;
+    left: 5px;
+    position: absolute;
+    text-align: right;
+    width: 35px;
+    z-index: 10;
+}
+
+#player-time-total {
+    left: 485px;
+    position: absolute;
+    z-index: 10;
+}
+
+#player-timebar {
+    background: #111;
+    border: 1px solid #272727;
+    color: #fff;
+    display: none;
+    font-size: 11px;
+    height: 32px;
+/*    left: 1px; */
+    line-height: 32px;
+    position: relative;
+    top: 32px;
+    width: 658px;
+}
+
+#player-volume-mute {
+    width: 28px;
+    margin-right: 3px;
+    position: absolute;
+    top: 0;
+    right: 84px;
+    cursor: pointer;
+}
+
+.player-volume-mute-active {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-volume.png) left -22px no-repeat;
+}
+
+.player-volume-mute-inactive {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-volume.png) left 7px no-repeat;
+}
+
+#player-volume-ctrl {
+    height: 8px;
+    background: orange;
+}
+
+#player-volume-outer {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 11px;
+    border: 1px solid #aaa;
+    width: 70px;
+    line-height: 8px;
+}
+
+#player:hover span,
+.play:hover span {
+    background-position: 0 -48px;
+}
+
+#player:hover span.pause,
+.pause:hover span {
+    background-position: 48px -48px;
+}
+
+#player:hover,
+.play-ctrl:hover {
+    background: none;
+    border: 0;
+}
+
+#playerPrev,
+#playerPlay,
+#playerFav,
+#playerNext {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/player-controls-new.png) no-repeat;
+    border-right: 1px solid rgb(39,39,39);
+    cursor: hand;
+    display: block;
+    float: left;
+    height: 32px;
+    overflow: hidden;
+    top: 0;
+    width: 32px;
+}
+
+.disabled #playerPrev,
+.disabled #playerPlay,
+.disabled #playerFav,
+.disabled #playerNext {
+    cursor: default;
+}
+
+#playerFav {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-fav-player.png) no-repeat;
+    margin: 0px;
+}
+
+#playerPrev.playerPrev-inactive, #playerNext.playerNext-inactive {
+    display: none;
+}
+
+#playerNext {
+    margin-right: 15px;
+}
+
+#playerPrev {       background-position: -64px 0px; }
+#playerPrev:hover { background-position: -64px -32px; }
+#playerPlay {       background-position:  0px  0px; }
+#playerPlay:hover { background-position:  0px -32px; }
+#playerNext {       background-position: -96px  0px; }
+#playerNext:hover { background-position: -96px -32px; }
+#playerFav.fav-off {        background-position: 0  0px; }
+#playerFav.fav-off:hover {  background-position: 0 -32px; }
+#playerFav.fav-on {         background-position: 0 -64px; }
+
+.disabled #playerPrev:hover { background-position: -64px 0px; }
+.disabled #playerPlay:hover { background-position:  0px  0px; }
+.disabled #playerNext:hover { background-position: -96px 0px; }
+.disabled #playerFav:hover  { background-position:  0px  0px; }
+
+#playerFav.fav-load {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/icon-loading-dark.gif) 7px 8px no-repeat;
+}
+
+#player-nowplaying a {
+    font-weight: 700;
+}
+
+#player-nowplaying > * {
+    vertical-align: top;
+}
+
+#player-container a:hover {
+    color: #111;
+}
+
+body #player-inner .pause {
+    background-position: -32px 0;
+}
+
+body #player-inner .pause:hover {
+    background-position: -32px -32px;
+}
+
+/* END PLAYER */
+
+#radioheader h3 {
+    font-size: 15px;
+}
+
+#download-radio {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/download.jpg) left bottom no-repeat;
+    float: left;
+    height: 75px;
+    margin: 0 0 20px 10px;
+    padding: 5px 0 0 70px;
+    width: 260px;
+}
+
+#download-radio a {
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    display: block;
+    float: left;
+    font-size: 15px;
+    margin: 0 6px 10px 0;
+    padding: 3px 5px;
+}
+
+#download-radio a:hover {
+    border: 1px solid #0063dc;
+    text-decoration: none;
+}
+
+#share-radio {
+    float: left;
+    height: 75px;
+    padding: 5px 0 0 70px;
+    width: 200px;
+}
+
+#radio-blogs h3,
+#content-left #radio-tracks h3 {
+    clear: both;
+    color: #000;
+    font-size: 15px;
+    letter-spacing: 0;
+    margin: 20px 0 0;
+    padding: 3px 5px;
+    text-transform: uppercase;
+}
+
+#radio-blogs h4 {
+    font-size: 13px;
+    letter-spacing: 0;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+}
+
+#radio-blogs li {
+    float: left;
+    height: 80px;
+    margin-right: 10px;
+    padding: 20px 10px 0px 100px;
+    position: relative;
+    width: 180px;
+}
+
+#radio-blogs li img {
+    border: 1px solid #aaa;
+    left: 5px;
+    position: absolute;
+    top: 10px;
+    width: 80px;
+    height: 80px;
+}
+
+#radio-nowplaying {
+    border: 0;
+    padding-bottom: 75px;
+}
+
+#radio-nowplaying .meta,
+#radio-nowplaying p {
+    margin: 5px 0 0 170px;
+}
+
+#radio-nowplaying h3,
+#radio-nowplaying .meta,
+#radio-nowplaying p {
+    margin: 0 0 0 170px;
+}
+
+#radio-tracks {
+    border: 1px solid #fff;
+    clear: both;
+    margin: 20px 0 0;
+}
+
+#radioplayer {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/radioshow-loading.jpg) top center no-repeat;
+    height: 81px;
+    width: 728px;
+}
+
+.player-onair {
+    color: #ed2024;
+    font-weight: 700;
+}
+
+.radio .radioad {
+    border: 10px solid #f1f1f1;
+    padding: 5px;
+}
+
+.radio ol li {
+    border-bottom: 1px solid #ddd;
+    font-size: 13px;
+    list-style: decimal;
+    list-style-position: inside;
+    padding: 8px 5px;
+}
+
+.radio ol li.odd {
+    background: #eee;
+}
+
+#content-left #radio-tracks h3 {
+    margin-bottom: 10px;
+}
+
+#soundcloud {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/icon-soundcloud.jpg) left center no-repeat;
+    display: block;
+    font-size: 13px;
+    margin: 0 0 20px;
+    padding: 10px 10px 10px 65px;
+}
+
+#random span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/heart.png);
+    bottom: 70px;
+    display: block;
+    height: 118px;
+    position: absolute;
+    right: 15px;
+    width: 150px;
+}
+
+#read-post {
+    line-height: 32px;
+}
+
+#read-post img {
+    margin-top: 4px;
+}
+
+/*
+#search-tip {
+    height:45px;
+}
+*/
+
+#search-tip {
+/*    background: #eee url(http://static-ak.hypem.net/rev_1320095545/images/bg-arrow.gif) center right no-repeat;*/
+    background: #eee center right no-repeat;
+    color: #000;
+    display: block;
+/*    float: right;
+    clear:both;
+*/
+    font-size: 13px;
+    font-weight: bold;
+/*    height: 45px;
+    line-height: 45px;
+*/
+    width: 270px;
+    padding: 15px 15px 15px 15px;
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+#search-tip:hover {
+    text-decoration:none;
+}
+
+#search-tip em {
+    color: #0063dc;
+    font-style: normal;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+#search-tip:hover em {
+    text-decoration:none;
+}
+
+#sidebar-spy img {
+    border: 1px solid #aaa;
+    margin-right: 4px;
+    margin-top: 3px;
+    height: 40px;
+    width: 40px;
+}
+
+#sidebar-spy li,
+#sidebar-spy-countries li {
+    float: left;
+    line-height: 1em;
+}
+
+#sidebar-spy,
+#sidebar-spy-countries {
+    border-top: 0;
+    margin-bottom: 5px;
+}
+
+#twitter-board li a,
+#active-users li a {
+    display: block;
+    float: left;
+    font-weight: 700;
+    height: 35px;
+    padding: 5px 0;
+    width: 140px;
+}
+
+#twitter-board li a:hover, #active-users li a:hover {
+    text-decoration: none;
+}
+
+#twitter-board li a:hover em, #active-users li a:hover em {
+    text-decoration: underline;
+}
+
+#twitter-board li em,
+#active-users li em {
+    color: #0063dc;
+    font-size: 13px;
+    font-weight: 700;
+    left: 42px;
+    overflow: hidden;
+    position: absolute;
+    top: 7px;
+    width: 95px;
+}
+
+#twitter-board li img,
+#active-users li img {
+    background: url(http://static-ak.hypem.net/rev_1320095545/images/bg-twitter-med.jpg);
+    border: 1px solid #999;
+    float: left;
+    margin-right: 5px;
+}
+
+#twitter-board li span,
+#active-users li span {
+    border: 1px solid #fff;
+    color: #999;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+#twitter-board li,
+#active-users li {
+    float: left;
+    font-size: 13px;
+    position: relative;
+}
+
+#twitter_score_dyn {
+    font-size: 14px;
+    line-height: 1.5em;
+    margin: 0;
+}
+
+#twitter_score_name {
+    margin: 10px 5px 5px 0;
+    width: 130px;
+}
+
+.rel_info {
+    border-top: 1px solid #DDD;
+    margin: 10px 0 0 72px;
+    padding: 10px 0 0 0;
+    font-size: 14px;
+    color: #999;
+}
+
+.rel_info span {
+    font-weight:bold;
+    font-size: 15px;
+}
+
+.rel_info a {
+    color: #555;
+    font-size: 14px;
+}
+
+.act_info_tweets li .tweet_points_total {
+    color: #333;
+    display: block;
+    font-size: 13px;
+    line-height: 27px;
+    position: absolute;
+    right: 5px;
+    top: 4px;
+}
+
+.act_info_tweets li .twitter_user {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.act_info_tweets li img {
+    float: left;
+    margin: 0 5px 0 0;
+}
+
+#directory ul {
+    margin: 10px 0 0;
+}
+
+#directory-message {
+    font-size: 24px;
+    line-height: 100px;
+    margin: 0;
+    text-align: left;
+    width: 915px;
+}
+
+#directory {
+    margin-top: 0px;
+    border: none;
+}
+
+#directory-search, #directory-tags, #directory-alpha {
+    display: block;
+    border: 1px solid #DDD;
+    margin-left: 10px;
+    padding: 0px 8px;
+    margin-bottom: 25px;
+    width: 1019px;
+}
+
+#directory-tags {
+    float: left;
+}
+#directory-tags ul {
+    margin-top: 8px;
+}
+
+#directory-search {
+    text-align: left;
+    font-size: 12px;
+    line-height: 12px;
+    float: left;
+}
+
+#directory-search label {
+    font-weight: 800;
+}
+
+#directory-search input[type="text"],
+#directory-search label,
+#directory-search input[type="text"],
+#directory-search input[type="submit"] {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    display: inline-block;
+    padding: 0px;
+}
+
+#directory-search input[type="text"] {
+    font-size: 20px;
+    width: 330px;
+    float: left;
+    margin: 16px 0px 16px 16px;
+}
+
+#directory-search input[type="submit"] {
+    background: #E2E2E2;
+    border: 1px solid #CCC;
+    padding: 0px 10px;
+    display: inline-block;
+    height: 29px;
+    font-size: 14px;
+    margin-top: 16px;
+}
+
+#directory-alpha {
+    text-align: left;
+    font-size: 46px;
+    line-height: 46px;
+    float: left;
+    padding-top: 8px;
+}
+
+#directory-alpha a {
+    display:inline-block;
+    border:1px solid #eee;
+    padding: 3px 5px 0 5px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    float:left;
+}
+
+
+#directory-alpha .active {
+    background-color:#eee;
+}
+
+span#directory-options {
+    font-size: 20px;
+}
+
+span#directory-options a {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.no-results {
+    font-size: 12px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+h1.inline {
+    display: inline-block;
+    width: auto;
+}
+
+#directory-tags li a#showalltags {
+    background: #fff;
+    border: 0;
+}
+
+#directory-tags li a.active,
+#languages li a.active {
+    background: #333;
+    color: #fff;
+}
+
+#directory-tags li a:hover,
+#directory-tags li a.active:hover {
+    background: #aaa;
+    color: #000;
+}
+
+#directory-tags h3 {
+    clear: both;
+    font-size: 15px;
+    font-weight: 400;
+    margin: 0;
+}
+
+#directory-message {
+    font-weight: 700;
+    margin-top: -120px;
+    padding: 0 10px;
+}
+
+#directory-pager {
+    clear: both;
+    display: block;
+    margin: 50px auto;
+    width: 280px;
+}
+
+#directory-pager a,
+#directory-pager span {
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-size: 18px;
+    height: 30px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    text-align: center;
+    width: auto;
+    height: auto;
+    position: relative;
+}
+
+#directory-pager a:hover,
+#directory-pager span:hover {
+    border-color: #1153DF;
+}
+
+#directory-blogs {
+    margin-top: -37px;
+    padding-left: 10px;
+    float: left;
+    margin-bottom: 62px;
+}
+
+.directory-blog {
+    background: #000;
+    float: left;
+    height: 275px;
+    margin-left: 17px;
+    margin-right: 17px;
+    margin-top: 37px;
+    overflow: hidden;
+    position: relative;
+    text-align: left;
+    width: 310px;
+}
+
+.directory-blog h3 a {
+    display: block;
+    font-size: 20px;
+    position: relative;
+    text-align: left;
+}
+
+.directory-blog h3 a .play-button {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/button-play-blog.png) left top no-repeat;
+    height: 80px;
+    width: 80px;
+    position: absolute;
+    left: 120px;
+    top: 80px;
+    z-index: 20;
+    display: none;
+}
+
+.directory-blog h3 a:hover .play-button {
+    display: block;
+}
+
+.directory-blog h3 a span {
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.directory-blog-artists {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/bg-blog-directory.png);
+    bottom: 0;
+    color: #DDD;
+    display: block;
+    font-size: 12px;
+    left: 0;
+    padding: 3px 5px;
+    position: absolute;
+    text-align: left;
+    text-shadow: #000 0 1px 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.directory-blog-artists a {
+    color: #fff;
+    font-weight:bold;
+}
+
+.directory-blog img {
+    position: relative;
+    z-index: 10;
+}
+
+#language {
+    display: block;
+    height: 100px;
+    padding: 0 10px;
+}
+
+#language li a span,
+#directory-tags li a span {
+    color: #888;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#language li a,
+#directory-tags li a, #browse-genres li a {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    background: #eee;
+    border-bottom: 1px solid #aaa;
+    border-radius: 5px;
+    border-right: 1px solid #aaa;
+    display: block;
+    float: left;
+    font-size: 13px;
+    margin: 0 8px 8px 0;
+    padding: 3px 8px;
+    text-transform: lowercase;
+}
+
+#directory-tags .zoyatag a {
+    font-weight: 700;
+}
+
+#browse-genres ul li {
+    display: inline;
+    font-size: 13px;
+    line-height: 1.1em;
+    margin: 0 5px 2px 0;
+}
+
+#browse-genres ul li {
+    color: #C7D2D6;
+    line-height: 1.4em;
+}
+
+#browse-genres ul {
+    padding-top: 5px;
+}
+
+#browse-genres li a {
+    font-size: 12px;
+    padding: 1px 4px;
+    margin: 0 6px 6px -2px;
+}
+
+#directory {
+    line-height: 18px;
+}
+
+#directory-tags li a {
+    height: 18px;
+}
+
+#directory-tag-navigation {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+#directory-tags li {
+    float: left;
+}
+
+#language li a, #directory-tags li a {
+    border-left: 1px solid transparent;
+    border-top: 1px solid transparent;
+}
+
+.buy {
+    border-bottom: 1px solid #dedede;
+    display: block;
+    font-size: 12px;
+    line-height: 25px;
+    width: 506px;
+}
+
+.msg img {
+    float: left;
+    height: 35px;
+}
+
+.notice {
+    background: #c1e5f6;
+    border: 3px solid #43B0E4;
+    border-width: 3px 0;
+    color: #111;
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 15px 0;
+    padding: 10px 8px;
+    text-transform: uppercase;
+}
+
+.notice em {
+    color: #ED2024;
+    font-style: normal;
+}
+
+.notice:hover,
+#content-left .spy-filter .section:hover,
+#content-right #current-hype .section h3 a:hover,
+#content-right #current-hype ul li a:hover {
+    background: #c1e5f6;
+}
+
+.person-loved {
+    background: #fff;
+    border: 2px solid #fff;
+    left: 2px;
+    position: absolute;
+    top: 20px;
+    z-index: 100;
+}
+
+.section {
+    background: #f4f4f4;
+    border-top: 1px solid #ddd;
+    padding-bottom: 23px;
+    padding-top: 26px;
+    position: relative;
+}
+
+.section .section-player:last-child .section-track {
+    padding-bottom: 0px;
+}
+
+.section.odd {
+    background: #fff;
+}
+
+.section.first {
+    border:none;
+    background: #fff;
+}
+
+.section .album-art:hover {
+    z-index: 100;
+}
+
+
+.follow-pill {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-left: 1px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-bottom-left-radius: 2px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-bottomleft: 2px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+    top: -1px;
+}
+.follow-pill em {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    top: 2px;
+    left: 2px;
+    background: url(http://static-ak.hypem.net/rev_1338361621/images/icon-follow-small.png) top left no-repeat;
+}
+.follow-pill span {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    top: 0px;
+    left: 14px;
+    background-color: #0068d7;
+    line-height: 16px;
+    font-size: 12px;
+    padding: 1px 3px 1px 2px;
+    -webkit-border-top-right-radius: 2px;
+    -webkit-border-bottom-right-radius: 2px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-bottomright: 2px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+}
+.follow-pill:hover {
+    background-color: #0068d7;
+    color: #fff;
+    text-decoration: none;
+    -moz-box-shadow: 0px 1px 0px #ccc;
+    -webkit-box-shadow: 0px 1px 0px #ccc;
+    box-shadow: 0px 1px 0px #ccc;
+}
+.follow-pill:hover em {
+    background: url(http://static-ak.hypem.net/rev_1338361621/images/icon-follow-small.png) top right no-repeat;
+    color: #fff;
+}
+.follow-pill:hover span {
+    display: inline-block;
+    -moz-box-shadow: 0px 1px 0px #ccc;
+    -webkit-box-shadow: 0px 1px 0px #ccc;
+    box-shadow: 0px 1px 0px #ccc;
+}
+.follow-pill.unfollow em {
+    background: url(http://static-ak.hypem.net/rev_1338361621/images/icon-follow-small.png) bottom left no-repeat;
+}
+.follow-pill.unfollow:hover em {
+    background: url(http://static-ak.hypem.net/rev_1338361621/images/icon-follow-small.png) bottom right no-repeat;
+}
+
+hr.brk {
+    background: transparent;
+    border: 0;
+    color: #f4f4f4;
+    height: 13px;
+    margin: 0px;
+    display: none;
+}
+
+.section .meta {
+    margin: 1px 0 3px 72px;
+    width: 569px;
+}
+
+.section .meta .fans {
+    background: #E0F3FB;
+    display: none;
+    height: 100%;
+    left: 0;
+    line-height: 20px;
+    overflow: hidden;
+    position: absolute;
+    text-indent: 5px;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+}
+
+.section .meta .show {
+    background: #fff;
+    position: absolute;
+    right: 5px;
+}
+
+.section .meta .show-dl {
+    background: #E0F3FB;
+}
+
+.section .meta a.show:hover,
+a:hover#soundcloud {
+    border: 0;
+    text-decoration: underline;
+}
+
+.section .flot {
+    margin-left: 65px;
+    border-top: 1px solid #CCC;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.section .flot .content, .section .flot {
+    width: 510px;
+    height: 150px;
+}
+
+.section .flot .legend .legendColorBox,
+.section .flot .legend .legendLabel {
+    vertical-align: middle;
+    font-size: 12px;
+}
+
+.section .flot .legend .legendColorBox {
+    padding-right: 6px;
+}
+
+.section .flot .legend .legendColorBox div {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.section .rank {
+    background: #111;
+    border: 1px solid #fff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    height: 22px;
+    left: 5px;
+    line-height: 22px;
+    padding: 0 5px;
+    position: absolute;
+    text-align: center;
+    top: 20px;
+    z-index: 5;
+}
+
+.section .readpost span {
+    border: 1px solid #999;
+    display: block;
+    height: 50px;
+    left: 10px;
+    position: absolute;
+    top: 31px;
+    width: 50px;
+}
+
+.section.same {
+    position: relative;
+    border-top: 0px;
+    top: -13px;
+    padding-top: 13px;
+    margin-bottom: -13px;
+}
+
+/*.section.same.active-playing-green {
+    padding-top: 13px;
+}*/
+
+#content-left .section.same .section-player,
+#content-left .section.same h3 {
+    margin-top: 0px;
+}
+
+.section.same .rank {
+    left: -67px;
+    top: 0;
+}
+
+.section.same .tools {
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 17px;
+    width: 115px;
+}
+
+.section.same a.fav-off,
+.section.same a.fav-on {
+    color: #dedede;
+    letter-spacing: 1px;
+    position: relative;
+    vertical-align: top;
+}
+
+.section.same span.number {
+    left: -65px;
+    position: absolute;
+    top: 10px;
+}
+
+.section .tools {
+    position: absolute;
+    right: 10px;
+    text-align: right;
+    top: 30px;
+    width: 115px;
+    z-index: 10;
+}
+
+#content-left .section.first .tools {
+    top: 48px;
+}
+
+.section .tools a.play-ctrl {
+    border: 0;
+    color: #fff;
+    display: block;
+    font-size: 1px;
+    height: 19px;
+    overflow: hidden;
+    position: relative;
+    text-indent: -1000px;
+    width: 18px;
+}
+
+.section .tools a.play-ctrl span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) 0 0 no-repeat;
+    cursor: hand;
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 6;
+}
+
+#section-active .tools a.play-ctrl span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) -22px 0 no-repeat;
+}
+
+.section .tools a:hover.play span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) 0 -22px no-repeat;
+}
+
+#section-active .tools a.play:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) -22px -22px no-repeat;
+}
+
+.section .tools a:hover.play-ctrl {
+    background: transparent;
+}
+
+.section .tools a.pause span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) -22px 0 no-repeat;
+}
+
+.section .tools a.pause:hover span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-playstop.png) -22px -22px no-repeat;
+}
+
+.section .tools .playdiv {
+    float: right;
+}
+
+.section .tools .favdiv {
+    float: right;
+    position: relative;
+}
+
+.clear {
+    clear: both;
+}
+
+.section .tools .sparkdiv {
+    float: right;
+    border: 1px solid #DDD;
+    width: 47px;
+    margin-top: 28px;
+    height: 20px;
+    padding: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.section .tools .share {
+    cursor: pointer;
+    float: right;
+    display: block;
+    width: 20px;
+    height: 20px;
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-share.png);
+}
+
+.section .tools .sparkdiv:hover {
+    cursor: pointer;
+    background: #fdf0c9;
+    border-color: #e0d4b2;
+}
+
+.section .share {
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 10px;
+}
+
+.section .share:hover {
+    opacity: 0.5;
+}
+
+.section .tools .favdiv a {
+    float: left;
+}
+
+.section .track-info {
+    color: #bbb;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 71px;/*
+    margin-top: -18px;*/
+    padding: 0 0 4px 0;
+    text-transform: uppercase;
+}
+
+.section.extra-info {
+    padding-top: 8px;
+}
+
+.me-pages .section .track-info {
+    padding: 0 0 4px 0;
+    display: block;
+}
+
+.section .track-info img {
+    float: left;
+    margin: -1px 4px 0 0;
+    height: 18px;
+    width: 18px;
+}
+
+
+#content-left .section h3 .track:hover {
+    text-decoration:none;
+} 
+
+#content-left .section h3 a:hover .base-title {
+    text-decoration:underline;
+} 
+
+#content-left .section h3 .remix-link {
+    background:#dedede; 
+    color:#72AA37; 
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    border-left:5px solid #dedede; 
+    border-right:5px solid #dedede;
+    border-top: 3px solid #DEDEDE;
+    text-decoration:none;
+}
+/*
+#content-left .section h3 a:hover .remix-link {
+    color:#83C441; 
+    text-decoration:none;
+}
+*/
+
+#content-left .section h3 a:hover .remix-link {
+    text-decoration: none;
+}
+
+#content-left .section h3 .remix-count {
+    color:#72AA37; 
+    font-weight:normal;
+    font-size:18px;
+}
+
+#content-left .section h3 .remix-icon {
+    background:url(http://static-ak.hypem.net/rev_1337748298/images/icon-remix.png) no-repeat; 
+    width: 20px;
+    height: 20px;
+    margin: 1px 5px 0 0px;
+    position: relative;
+    float:left;
+}
+
+#content-left h2 .remix-icon {
+    background:url(http://static-ak.hypem.net/rev_1337748298/images/icon-remix.png) no-repeat; 
+    width: 20px;
+    height: 20px;
+    position: relative;
+    float:left;
+    margin: -1px 5px 0 0px;
+}
+
+.section a.more-tracks {
+    font-size: 14px;
+    padding: 0 0 0 72px;
+}
+
+.section.same a.posted-by-others {
+    border: 0;
+    margin: 0 0 0 0px;
+    font-size: 12px;
+}
+
+.section a:hover.readpost span {
+    border: 2px solid #0063dc;
+    left: 9px;
+    top: 30px;
+}
+
+.section em {
+    color: #ccc;
+    font: 700 16px 'Helvetica', 'Arial', sans-serif;
+}
+
+.section em.section-tags {
+    color: #111;
+    font-size: 12px;
+}
+
+.section h4 em a {
+    color: #bbb;
+    font-size: 13px;
+}
+
+.section p a.blog-fav-on,
+#content-left .section h3 .search_match {
+    background: #FFFF99;
+    font-weight: 700;
+}
+
+.section p a.fav-off span,
+#content-right a.fav-off span,
+.twitter-meta a.fav-off span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-sub-small.png) 0 1px no-repeat;
+}
+
+.section p a.fav-on span,
+#content-right a.fav-on span,
+.twitter-meta a.fav-on span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-sub-small.png) 0 -27px no-repeat;
+    color: #e94914;
+}
+
+.section p a.fav-on,
+.section p a.fav-off,
+#content-right a.fav-off,
+#content-right a.fav-on,
+.twitter-meta a.fav-off span,
+.twitter-meta a.fav-on span {
+    float: left;
+    height: 13px;
+    margin-right: 5px;
+    top: 2px;
+    width: 15px;
+}
+
+.section p a:hover.fav-off span,
+#content-right a:hover.fav-off span,
+.twitter-meta a:hover.fav-off span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-sub-small.png) 0 -13px no-repeat;
+    color: #277be1;
+}
+
+.section p,
+#content-left #previous-mentions .section p {
+    color: #333;
+    font-size: 13px;
+}
+
+.section-odd .meta .show {
+    background: #f4f4f4;
+}
+
+.tabberlive .tabbertabhide,
+#events .sxsw-song .album-art {
+    display: none;
+}
+
+#events .sxsw-song {
+    background: transparent;
+}
+
+.tooltip {
+    background: transparent url(http://static-ak.hypem.net/rev_1330987235/images/tooltip.png) top center no-repeat;
+    color: #fff;
+    display: none;
+    font-size: 11px;
+    height: 20px;
+    line-height: 21px;
+    overflow: hidden;
+    padding: 0 6px 8px;
+    width: auto;
+    position: relative;
+    z-index: 9999;
+}
+
+#player-container .twitter-share {
+    border-right: none;
+}
+
+.twitter-share {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/twitter-button.png) left top no-repeat;
+    width: 55px;
+    height: 20px;
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 3px;
+}
+
+.twitter-share:hover {
+    opacity: 0.8;
+}
+
+.tumblr-share {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/tumblr-share.png) left top no-repeat;
+    width: 49px;
+    height: 20px;
+    display: inline-block;
+    margin-top: 4px;
+    margin-bottom: 3px;
+}
+
+.tumblr-share:hover {
+    background-position: left bottom;
+}
+
+.tweet-position {
+    background: #000;
+    color: #fff;
+    display: block;
+    font-size: 25px;
+    height: 50px;
+    left: 5px;
+    line-height: 50px;
+    position: absolute;
+    text-align: center;
+    top: 30px;
+    width: 50px;
+}
+
+.tweet-position em {
+    background: url(http://static-ak.hypem.net/rev_1320095546/images/points.gif) bottom center no-repeat;
+    color: #888;
+    display: block;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0 0 2px;
+    width: 50px;
+}
+
+.tweets_extra {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    clear: both;
+    margin: 10px 0 0 70px;
+    max-height: 240px;
+    overflow-y: auto;
+    padding: 0 5px;
+    position: relative;
+    width: 495px;
+}
+
+.tweets_extra li {
+    border-bottom: 1px solid #ddd;
+    clear: both;
+    color: #777;
+    display: block;
+    font-size: 11px;
+    line-height: 25px;
+    padding: 5px 2px;
+    position: relative;
+}
+
+.tweets_extra_toggle {
+    background: none;
+    font-weight: 700;
+    padding: 0;
+}
+
+.twitter-meta {
+    border-bottom: 1px solid #dedede;
+    display: block;
+    font-size: 11px;
+    margin-left: 65px;
+    padding: 3px;
+    width: 500px;
+}
+
+.twitter_contributors a {
+    border: 1px solid #999;
+    display: block;
+    float: left;
+    height: 25px;
+    margin-right: 5px;
+    position: relative;
+    width: 25px;
+}
+
+.twitter_contributors a img {
+    background: url(http://static-ak.hypem.net/rev_1320095545/images/bg-twitter-small.jpg);
+    height: 25px;
+    width: 25px;
+}
+
+.twitter_contributors a.tweets_extra_toggle {
+    border: 0;
+    height: 25px;
+    line-height: 25px;
+    width: 180px;
+}
+
+.user-stats #avatar {
+    float: left;
+    margin: 0px 10px 10px 0;
+}
+
+.user-stats li {
+    display: block;
+    float: left;
+    height: 42px;
+    line-height: 1em;
+    margin: 0 2px 0 0;
+    text-align: center;
+    width: 64px;
+}
+
+abbr:hover,
+.section-odd .brk,
+#content-left h2 a,
+#content-left #blog h2 a {
+    color: #fff;
+}
+
+#mostbloggedbands #content-left p {
+    margin-top: 0;
+}
+
+#mostbloggedbands h3 a {
+    color: #666;
+}
+
+#mostbloggedbands .section .rank {
+    position: relative;
+    top: 2px;
+    left: 0;
+    display: inline-block;
+    float: left;
+    padding-top: 1px;
+}
+
+#mostbloggedbands .section h2 a {
+    line-height: 30px;
+    margin: 0 0 0 10px;
+    font-size: 25px;
+    color: #000;
+}
+
+#mostbloggedbands .section h2 {
+    background: #eee;
+    border-bottom: 1px solid #ddd;
+    font-weight: 700;
+    display: block;
+    margin: 0;
+}
+
+#mostbloggedbands .section .readpost span {
+    top: 25px;
+    left: 50px;
+}
+
+#mostbloggedbands #content-left .section.artist {
+    padding: 0px;
+}
+
+#mostbloggedbands #content-left .section {
+    background: #fff;
+    padding: 10px 0 20px 0;
+}
+
+#mostbloggedbands #content-left .section h3 {
+    margin: 10px 0 5px 110px;
+}
+
+#mostbloggedbands #content-left .section p, #mostbloggedbands #content-left .section .meta {
+    margin-left: 110px;
+}
+
+#mostbloggedbands .section .tools {
+    top: 27px;
+}
+
+#content-right #tour-dates a:hover,
+body #content-right #tour-dates ul li a:hover .city,
+#content-right #tour-dates ul li a:hover .perf,
+#songkick a:hover {
+    color: #0063dc;
+    text-decoration: underline;
+}
+
+body .section .loved-by-avatar {
+    display: block;
+    height: 50px;
+    left: 3px;
+    position: absolute;
+    top: 18px;
+    width: 50px;
+}
+
+body .section .loved-by-avatar img {
+    border: 1px solid #eee;
+    height: 50px;
+    width: 50px;
+}
+
+em#spy-status {
+    font-style: normal;
+    color: #ccc;
+}
+
+h3 a.artist,
+.section h3 a.artist,
+.section.same h4 a.artist,
+#content-right #videos .section ul li a span,
+#content-right #current-hype h3,
+#content-right #current-hype .section h3 a:hover span,
+#content-left #list h2 span a:hover {
+    color: #111;
+}
+
+#badge {
+    font-size: 13px;
+    text-align: left;
+}
+
+#badge #preview-div {
+    margin: 0 auto;
+    width: 160px;
+}
+
+#badge p {
+    margin: 5px 10px 10px;
+}
+
+#badge-code {
+    clear: both;
+}
+
+#badge #codebox {
+    background: #ffffe1;
+    font-size: 12px;
+    height: 80px;
+    margin: 10px 0 50px;
+    overflow: hidden;
+    padding: 5px;
+    width: 710px;
+}
+
+#badge-color {
+    float: left;
+    width: 300px;
+}
+
+#badge-color .tabbertab li a img {
+    border: 1px solid #eee;
+    padding: 5px;
+}
+
+#badge-color .tabbertab li a:hover img {
+    background: #ee2125;
+}
+
+#badge-color h2 {
+    padding-right: 0;
+}
+
+#badge-color .tabbertab li a:hover {
+    background: none;
+    border: 0;
+}
+
+#badge-color .tabbertab li {
+    display: inline;
+}
+
+#badge-color table td {
+    padding: 3px;
+}
+
+#badge #colorpicker {
+    margin: 10px 0 0 45px;
+}
+
+#badge-content {
+    float: left;
+    margin: 0 25px 0 0;
+    width: 310px;
+}
+
+#badge-content #blogpick {
+    width: 250px;
+}
+
+#badge-content #numberpick-text {
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0 10px;
+}
+
+#badge-content label {
+    padding: 2px 0;
+}
+
+#badge-content label#stuff-by-user {
+    padding: 10px 0 0;
+}
+
+#badge-content label#tracks-posted-by,
+#badge-content label#stuff-by-user {
+    padding: 2px 0 0;
+}
+
+#badge #search_keyword {
+    margin: 0 0 5px 35px;
+}
+
+#badge form label {
+    display: block;
+    margin: 0 10px 5px;
+}
+
+#badge form select {
+    margin: 0 0 0 35px;
+}
+
+#badge-right {
+    width: 320px;
+    float: right;
+    min-height: 600px;
+}
+
+#badge-right h2 {
+    margin-bottom: 10px;
+}
+
+#badge-content #numberpick-text select {
+    display: inline;
+}
+
+ul.tabbernav {
+    font-weight: 700;
+    padding: 3px 0;
+}
+
+ul.tabbernav li a {
+    background: #eee;
+    border: 1px solid #eee;
+    border-bottom: 1px solid #fff;
+    margin-left: 6px;
+    padding: 3px 0.5em;
+    text-decoration: none;
+}
+
+ul.tabbernav li a:hover {
+    background: #ccc;
+    border-color: #333;
+    color: #000;
+}
+
+ul.tabbernav li.tabberactive a {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+}
+
+ul.tabbernav li.tabberactive a:hover {
+    background: white;
+    border-bottom: 1px solid white;
+    color: #000;
+}
+
+.tabberlive {
+    margin-top: 1em;
+}
+
+.tabberlive .tabbertab {
+    height: 340px;
+    overflow: hidden;
+}
+
+.tabberlive .tabbertab table {
+    margin: 10px 0 0;
+}
+
+.section.same .buy,
+a.view-more:hover,
+#content-right #ad-rectangle a:hover,
+#preview-div a:hover,
+#sidebar-spy li a:hover,
+#content-right .spy-countries a img,
+#content-right .spy-countries a:hover img {
+    border: 0;
+}
+
+#content-right #current-hype ul li a,
+#twitter-board li a:hover,
+.blog a:hover {
+    text-decoration: none;
+}
+
+.section:hover .track-info,
+#profile .section .track-info,
+/*.user-menu:hover ul,*/
+#header .menu li.sfhover ul,
+#events-remote-link {
+    padding: 0 0 4px 0;
+    display: block;
+}
+
+#content-right .section ul,
+#sidebar-spy ul {
+    margin: 0;
+}
+
+#play-by-tweeting {
+    clear: both;
+    height: 7px;
+    margin: 5px 0 20px;
+}
+
+#play_links #play_stream {
+    font-size: 13px;
+    line-height: 1.8em;
+}
+
+#play_links #player {
+    float: left;
+    margin-right: 10px;
+}
+
+#play_stream #player {
+    position: relative;
+    top: 0;
+}
+
+#player span,
+.play span,
+.pause span {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/button-play.png);
+    display: block;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+#player span.pause,
+.pause span {
+    background-position: 48px 0;
+}
+
+#player,
+.play-ctrl {
+    display: block;
+    font-size: 1px;
+    height: 48px;
+    left: 0;
+    line-height: 48px;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: 48px;
+}
+
+#content-right #news ul li a .title,
+#content-right #radio-archive ul li a .title,
+#content-right #current-hype ul li.hyped-5,
+#msg1,
+#msg2,
+#msg3 {
+    font-size: 11px;
+}
+
+#contact p,
+#badge #color p,
+#code p {
+    margin: 10px;
+}
+
+#content-left #player #controls,
+#message p.radio #loudcity,
+.radio h2 a#radio-dl,
+#play-by-tweeting img {
+    float: right;
+}
+
+
+#message-push {
+    padding-top: 7px;
+    display:none;
+}
+
+
+#message-intro {
+    background: #FFFFB5;
+    border: 1px solid #ccc;
+    /*border-radius: 4px; */
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0 auto;
+    padding: 0 20px 0 15px;
+    position: relative;
+    text-align: left;
+    width: 942px;
+    margin-bottom: 20px;
+}
+
+span.closed {
+    font-weight: 700;
+    padding: 0 0 10px 10px;
+    font-size: 13px;
+}
+
+#find-friends li {
+    text-align: left;
+    width: 250px;
+    float: left;
+    padding-bottom: 20px;
+}
+
+#find-friends li img {
+    float: left;
+    margin: 0 10px 0 0;
+    border: 1px solid #ccc;
+}
+
+#find-friends li strong {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+#find-friends li span {
+    display:block;
+    float:left;
+    font-size:13px;
+    margin: 4px 0 0 0;
+}
+
+
+#find-friends a.follow, #find-friends a.unfollow {
+    border: 1px solid #ccc;
+    padding: 2px 4px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    display: block;
+    float: left;
+    margin: 0 8px 0 0;
+}
+
+#find-friends a.follow:hover {
+    background: #0063dc;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #0063dc;
+}
+
+#find-friends a.unfollow {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid #333;
+}
+
+#find-friends a.unfollow:hover {
+    background: #ccc;
+    color: #000;
+    text-decoration: none;
+    border: 1px solid #333;
+}
+
+body #content-left .active-playing-green,
+body #mostbloggedbands #content-left .active-playing-green {
+    background: #FFC;
+}
+
+#location_suggestions {
+    background: #000;
+    text-indent: 5px;
+    position: relative;
+    z-index: 9999;
+    width: 180px;
+    max-height: 150px;
+    overflow-y: scroll;
+    display: none;
+}
+
+body #location_suggestions li {
+    text-align: left;
+    display: block;
+    width: 100%;
+}
+
+#location_suggestions li:hover {
+    background: #666;
+    cursor: pointer;
+}
+
+#examples {
+    margin: 20px 0 10px 60px;
+    font-size: 18px;
+    line-height: 1.3em;
+}
+
+.example-box {
+    float: left;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.3em;
+    padding-left: 50px;
+    position: relative;
+}
+
+.example-box .num {
+    background: #000;
+    color: #fff;
+    font-weight: 700;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 30px;
+    width: 40px;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.example-box span {
+    font-size: 12px;
+    display: block;
+    color: #333;
+    font-weight: 400;
+    margin: 0 0 10px;
+}
+
+.example-box span a {
+    color: #000;
+    text-decoration: underline;
+}
+
+.example-box img {
+    border: 5px solid #9a9a9a;
+}
+
+#player-links .facebook-share, .facebook-share {
+    float: left;
+    border: 1px solid #c9d3e6;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    padding: 2px 4px 3px 21px;
+    color: #3b5998;
+    font: 11px 'Lucida Grande', sans-serif;
+    background: #eceef5 url(http://static-ak.hypem.net/rev_1320095546/images/icon-fb-share.gif) 5px center no-repeat;
+}
+
+.facebook-share {
+    margin: 6px 5px 0;
+}
+
+#share-this-links .facebook-share {
+    padding: 4px 4px 5px 21px;
+    margin: 0 0 10px 0;
+}
+
+#share-this-links .g-plusone {
+    margin-top: 10px;
+}
+
+body #player-links .facebook-share:hover, .facebook-share:hover {
+    border: 1px solid #9dacce;
+    text-decoration: none;
+}
+
+#iphone {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/iphone-shell.png) left top no-repeat;
+    padding: 94px 25px 75px;
+    height: 400px;
+    margin-top: 35px;
+    margin-left: 30px;
+}
+
+#iphone .carousel {
+    position: relative;
+    width: 250px;
+    height: 375px;
+}
+
+#iphone .carousel img {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    display: none;
+}
+
+#iphone .carousel .nivo-caption {
+    position: absolute;
+    top: 475px;
+    color: #000;
+    font-size: 12px;
+    text-align: center;
+    font-weight: 800;
+    width: 100%;
+}
+
+#iphone .carousel .nivo-caption p {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+#iphone .carousel .nivo-controlNav {
+    position: absolute;
+    top: 510px;
+    text-align: center;
+    width: 100%;
+}
+
+.nivo-controlNav a {
+    color: #FFF;
+    background: #81BD0D;
+    display: inline-block;
+    padding: 1px 5px;
+    cursor: pointer;
+    margin: 0px 2px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+.nivo-controlNav a:hover {
+    text-decoration: none;
+}
+
+.nivo-controlNav a.active {
+    background: none;
+    color: #000;
+}
+
+#cat-tag {
+    background: url(http://static-ak.hypem.net/rev_1330987235/images/cattag.png) left top no-repeat;
+    width: 54px;
+    height: 54px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 40px;
+}
+
+#sxsw2012_schedule #mostbloggedbands .section {
+    padding-top: 0px;
+}
+
+#sxsw2012_schedule #mostbloggedbands .section .readpost span {
+    top: 14px;
+}
+
+#sxsw2012_schedule #mostbloggedbands .section a:hover .readpost span {
+    top: 14px;
+}
+
+#locale-blogs-header {
+    width: 728px;
+    position:relative;
+    float:left;
+    margin-bottom:25px;
+}
+
+#locale-blogs-header li {
+    position:relative;
+    float:left;
+    border:0;
+    padding:0;
+    margin:0;
+}
+
+#locale-blogs-header li a {
+    position:relative;
+    float:left;
+    padding:0;
+    margin:0;
+}
+
+#locale-blogs-header #locale-blogs-header-more a {
+    width: 120px;
+    height: 45px;
+    display: block;
+    float: left;
+    position: relative;
+    font-size: 30px;
+    padding: 15px;
+    line-height: 50px;
+    background-color: #eee;
+}
+
+/**
+ * Grid
+ */
+#grid{
+
+    /* Dimensions - same width as your grid with gutters */
+    width: 1050px;
+
+    /* Grid (left-aligned)
+    position: absolute;
+    top: 0;
+    left: 0;
+    */
+
+    /* Grid (centered) */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -525px;
+
+}
+
+/**
+ * Vertical grid lines
+ *
+ * Set the column width taking the borders into consideration,
+ * and use margins to set column gutters.
+ */
+#grid div.vert{
+
+    width: 139px;
+    border: solid darkturquoise;
+    border-width: 0 1px;
+    margin-right: 19px;
+
+}
+
+#grid div.vert.first-line{
+
+    margin-left: 0px;
+
+}
+
+
+/**
+ * Horizontal grid lines, defined by your base line height
+ *
+ * Remember, the CSS properties that define the box model:
+ * visible height = height + borders + margins + padding
+ */
+#grid div.horiz{
+
+    /* 20px line height */
+    height: 19px;
+    border-bottom: 1px dotted darkgray;
+    margin: 0;
+    padding: 0;
+
+}
+
+/**
+* Classes for multiple grids
+*
+* When using more than one grid, remember to set the numberOfGrids
+* option in the hashgrid.js file.
+*/
+#grid.grid-1 div.vert{
+
+    /* Vertical grid line colour for grid 1 */
+    border-color: darkturquoise;
+
+}
+#grid.grid-2{
+
+    /* Adjustments */
+    padding: 0 160px;
+    width: 660px;
+
+}
+#grid.grid-2 div.vert{
+
+    /* Vertical grid line colour for grid 2 */
+    border-color: crimson;
+
+}
+
+
+
+/*
+#olark-wrapper {
+    position:fixed;
+    z-index:1000;
+    bottom:0px;
+    width: 1023px;
+    margin: 0 auto;
+}
+
+#olark-subwrapper {
+    width: 300px;
+    float:right;
+}
+*/

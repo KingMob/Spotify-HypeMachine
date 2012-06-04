@@ -1,0 +1,98 @@
+@media screen and (min-width: 1100px) {
+
+    /* Width stuff */
+    #header-inner {
+        width: 1043px;
+    }
+
+    #sticky {
+        width: 1043px;
+    }
+
+    #message-intro {
+        width: 1008px;
+    }
+
+    #container {
+        width: 1043px;
+    }
+
+    #content-left {
+        width: 728px;
+    }
+
+    #recently-posted {
+        width: 728px;
+    }
+
+    .ad-leaderboard-midpage {
+        padding-right: 318px;
+    }
+
+    #content-left .section p, 
+    #content-left .section .buy {
+        width: 576px;
+    }
+
+    #content-left .section .meta {
+        width: 570px;
+    }
+
+    #player-inner {
+        width: 1043px;
+    }
+
+    #player-timebar {
+        width: 726px;
+    }
+
+    #player-progress-outer {
+        width: 510px;
+    }
+
+    #player-time-total {
+        left: 575px;
+    }
+
+    #footer-inner {
+        width: 1043px;
+    }
+
+    .paginator {
+        width: 728px;
+    }
+}
+
+@media screen and (max-width: 1099px) {
+    /* Remove ads */
+   
+    html, html body {
+        background: #FFF !important;
+    }
+
+    body #header {
+        background: #83C441 !important;
+    }
+
+    #logo {
+        visibility: visible !important; 
+    }
+
+    #header, #content-wrapper, #footer {
+        width: auto !important;
+    }         
+
+    #content-right .section.fast-forward-launch {
+        margin: 28px 0 5px;
+    }
+
+    #album-premiere {
+        width: 660px;
+    }
+
+    #zeitgeist-2011 #content-right {
+        width: 445px !important;
+        margin-left: 10px !important;
+    }
+
+}

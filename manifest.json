@@ -1,0 +1,25 @@
+{
+	"AppDescription": {
+            "en": "An example app to learn the Spotify API and integrate with an outside music site, Hype Machine. All images/resources copyright Hype Machine"
+    },
+    "AppIcon": {
+            "36x36": "images/36x36 icon.png"
+    },
+    "AppName": {
+            "en": "Hype Machine - Spotify example"
+    },
+    "BundleIdentifier": "hypemachine",
+    "BundleType": "Application",
+    "BundleVersion": "0.1",
+    "RequiredInterface": 1,
+	"RequiredPermissions": [ 
+		"http://*.hypem.com", 
+		"http://hypem.com",
+		"http://*.hypem.net", 
+		"http://hypem.net"
+	],
+    "SupportedLanguages": [
+            "en"
+    ],
+    "VendorIdentifier": "KingMob"
+}

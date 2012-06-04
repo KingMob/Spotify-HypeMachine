@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        @import url('sp://import/css/eve.css');
+        @import url('sp://import/css/player.css');
+        @import url('sp://import/css/ui.css');
+
+        @import url('sp://hypemachine/css/layout-wide.css');
+        @import url('sp://hypemachine/css/stylish-cdn.css');
+
+        h1, ul {margin:0 0 30px;}
+        a:hover {color:#83be20;}
+
+        /*#logo {background-color: #83C441;}*/
+        #content-left {float: none; margin-left: auto; margin-right: auto;}
+
+    </style>
+    <!-- <style type="text/css" src="sp://hypemachine/css/layout-wide.css"></style>
+    <style type="text/css" src="sp://hypemachine/css/stylish-cdn.css"></style> -->
+
+    <script type="text/javascript" src="sp://hypemachine/js/jquery-1.7.2.js"></script>
+
+    <script>
+    	$(document).ready(function(){
+	    	$.getJSON("http://hypem.com/playlist/popular/noremix/json/1/data.js", function(data) {
+	    		var items = [];
+
+				$.each(data, function(rank, songmap) {
+					//items.push('<li id="' + songmap["postid"] + '">' + songmap["artist"] + '- ' + songmap["title"] + '</li>');
+					// items.push(trackHTML(songmap));
+					// trackHTML(rank, songmap).appendTo("#content-left");
+					$("#content-left").append(trackHTML(rank, songmap));
+				});
+
+				// $('<ul/>', {
+				// 	'class': 'songs',
+				// 	html: items.join('')
+				// }).appendTo('body');
+	    		// items.join('').appendTo('body');
+	    	});
+
+	    	function trackHTML(key, songmap){
+	    		if(key === "version") {
+	    			return "";
+	    		}
+	    		rank = parseInt(key);
+	    		oddEvenStr = rank % 2 === 0 ? "even" : "odd";
+
+	    		return $('\
+	    			<div id="section-track-' + songmap["mediaid"] + '" class="section section-track ' + oddEvenStr + '" >\
+	    			<div class="section-player">\
+					<span class="rank">' + (parseInt(rank) + 1) + '</span>\
+					<div class="track-info"> </div>\
+					<h3 class="track_name">\
+		                <a class="artist" title="' + songmap["artist"] + ' - search hype machine for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a> -     	<a class="track" title="' + songmap["title"] + ' - go to page for this track" href="/track/' + songmap["mediaid"] + '/' + encodeURIComponent(songmap["artist"] + ' - ' + songmap["title"]) + '">\
+		    				<span class="base-title">' + songmap["title"] + '</span>\
+		    			</a>\
+		                <img src="http://static.hypem.net/rev_1330987235/images/icon-share-small.png" class="share" onmouseover="share_item(\'' + songmap["mediaid"] + '\'); return false;">\
+					</h3>\
+					\
+					<ul class="tools">\
+				    	<li class="playdiv">\
+				        	<a id="play_ctrl_' + songmap["mediaid"] + '" class="play-ctrl play" onclick="if (!event) { var event = window.event; } togglePlayByItemid(\'' + songmap["mediaid"] + '\', event); return false;" title="Play" href="">Play<span></span>\
+							</a>\
+						</li>\
+				        <li class="favdiv">\
+							<a class="fav_item_' + songmap["mediaid"] + ' fav-off" id="fav_item_' + songmap["mediaid"] + '" onclick="toggle_favorite(\'item\',\'' + songmap["mediaid"] + '\');return false;" title="Favorite" href="">Favorite<span></span>\
+							</a>\
+			        	</li>\
+					</ul>\
+					\
+				    <div class="meta">\
+				        <span class="buy">\
+	                        <a href="" onclick="toggle_item_activity(\'reposts\', \'' + songmap["mediaid"] + '\', 0); return false;">\
+		                    Posted by ' + songmap["posted_count"] + ' blogs</a> • \
+				        </span>\
+				    </div>\
+				    \
+			        <p>\
+						<a class="blog-fav-off" title="See other tracks posted by this blog" href="/blog/earmilk/11067">' + songmap["sitename_first"] + '</a><a id="fav_site_' + songmap["siteid_first"] + '" class="follow-pill fav_site_' + songmap["siteid_first"] + ' follow" onclick="toggle_favorite(\'site\',\'' + songmap["siteid_first"] + '\');return false;" href="#"><em></em><span>Follow</span></a>\
+						\
+						"' + songmap["description"] + '"\
+						<a class="readpost" href="' + songmap["posturl_first"] + '" title="Read this post: ' + songmap["artist"] + ' - ' + songmap["title"] + '">\
+						\
+						\
+						<span style="background:url(' + songmap["thumb_url"] + ');"></span>\
+						</a>\
+		        	</p>\
+	        		<div class="act_info" style=""></div>\
+					</div>\
+					</div>');
+	    	}
+    	});
+
+        // window.onload = function() {
+        //     sp = getSpotifyApi(1);
+        //     var models = sp.require('sp://import/scripts/api/models');
+            
+        //     tabs();
+        //     models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
+
+        //     function tabs() {
+        //         var args = models.application.arguments;
+        //         var current = document.getElementById(args[0]);
+        //         var sections = document.getElementsByClassName('section');
+        //         for (i=0;i<sections.length;i++){
+        //             sections[i].style.display = 'none';
+        //         }
+        //         current.style.display = 'block';
+        //     }
+        // }
+    </script>
+</head>
+<body>
+    <div id="container" class="clearfix">
+    	<div id="header">
+			<a id="logo" href="/" title="The Hype Machine"></a>
+		</div>
+	    <div id="content-left">
+		</div>
+    </div>
+</body>
+</html>
