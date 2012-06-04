@@ -29,6 +29,7 @@
 
     	$(document).ready(function(){
     		if(args.length === 0){
+    			$["JSON_URI"] = "http://hypem.com/playlist/popular/noremix/json/1/data.js";
     		}
     		else{
     			$["JSON_URI"] = args[0];
@@ -66,17 +67,6 @@
 		                <img src="http://static.hypem.net/rev_1330987235/images/icon-share-small.png" class="share" onmouseover="share_item(\'' + songmap["mediaid"] + '\'); return false;">\
 					</h3>\
 					\
-					<ul class="tools">\
-				    	<li class="playdiv">\
-				        	<a id="play_ctrl_' + songmap["mediaid"] + '" class="play-ctrl play" onclick="if (!event) { var event = window.event; } togglePlayByItemid(\'' + songmap["mediaid"] + '\', event); return false;" title="Play" href="">Play<span></span>\
-							</a>\
-						</li>\
-				        <li class="favdiv">\
-							<a class="fav_item_' + songmap["mediaid"] + ' fav-off" id="fav_item_' + songmap["mediaid"] + '" onclick="toggle_favorite(\'item\',\'' + songmap["mediaid"] + '\');return false;" title="Favorite" href="">Favorite<span></span>\
-							</a>\
-			        	</li>\
-					</ul>\
-					\
 				    <div class="meta">\
 				        <span class="buy">\
 	                        <a href="" onclick="toggle_item_activity(\'reposts\', \'' + songmap["mediaid"] + '\', 0); return false;">\
@@ -94,29 +84,33 @@
 						<span style="background:url(' + songmap["thumb_url"] + ');"></span>\
 						</a>\
 		        	</p>\
+		        	<div id="search_results_' + songmap["mediaid"] + '"></div>\
 	        		<div class="act_info" style=""></div>\
 					</div>\
 					</div>');
 	    	}
     	});
 
-        // window.onload = function() {
-        //     sp = getSpotifyApi(1);
-        //     var models = sp.require('sp://import/scripts/api/models');
+		function spotifySearch(mediaid, searchterm){
+            var search = new models.Search(searchterm);
+            search.localResults = models.LOCALSEARCHRESULTS.APPEND;
             
-        //     tabs();
-        //     models.application.observe(models.EVENT.ARGUMENTSCHANGED, tabs);
+            var searchHTML = document.getElementById('search_results_' + mediaid);
 
-        //     function tabs() {
-        //         var args = models.application.arguments;
-        //         var current = document.getElementById(args[0]);
-        //         var sections = document.getElementsByClassName('section');
-        //         for (i=0;i<sections.length;i++){
-        //             sections[i].style.display = 'none';
-        //         }
-        //         current.style.display = 'block';
-        //     }
-        // }
+            search.observe(models.EVENT.CHANGE, function() {
+                var results = search.tracks;
+                for(i = 0; i < results.length; i++){
+                    var link = document.createElement('li');
+                    var a = document.createElement('a');
+                    a.href = results[i].uri;
+                    link.appendChild(a);
+                    a.innerHTML = results[i].name;
+                    searchHTML.appendChild(link);
+                }
+            });
+
+            search.appendNext();
+        }
     </script>
 </head>
 <body>
