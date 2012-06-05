@@ -2,6 +2,7 @@
 <html>
 <head>
     <style>
+        @import url('sp://import/css/api.css');
         @import url('sp://import/css/eve.css');
         @import url('sp://import/css/player.css');
         @import url('sp://import/css/ui.css');
@@ -17,100 +18,8 @@
     </style>
 
     <script type="text/javascript" src="sp://hypemachine/js/jquery-1.7.2.js"></script>
+    <script type="text/javascript" src="sp://hypemachine/js/hypemachine.js"></script>
 
-    <script>
-        /* Instantiate the global sp object; include models & views */
-        var sp = getSpotifyApi(1);
-        var models = sp.require('sp://import/scripts/api/models');
-
-        var args = models.application.arguments;
-            // alert(args[0]);
-
-    	$(document).ready(function(){
-    		if(args.length === 0){
-    			$["JSON_URI"] = "http://hypem.com/playlist/popular/noremix/json/1/data.js";
-    		}
-    		else{
-    			$["JSON_URI"] = args[0];
-    		}
-	    	$.getJSON($["JSON_URI"], function(data) {
-	    		var items = [];
-
-				$.each(data, function(rank, songmap) {
-					$("#content-left").append(trackHTML(rank, songmap));
-				});
-
-				// $('<ul/>', {
-				// 	'class': 'songs',
-				// 	html: items.join('')
-				// }).appendTo('body');
-	    		// items.join('').appendTo('body');
-	    	});
-
-	    	function trackHTML(key, songmap){
-	    		if(key === "version") {
-	    			return "";
-	    		}
-	    		rank = parseInt(key);
-	    		oddEvenStr = rank % 2 === 0 ? "even" : "odd";
-
-	    		return $('\
-	    			<div id="section-track-' + songmap["mediaid"] + '" class="section section-track ' + oddEvenStr + '" >\
-	    			<div class="section-player">\
-					<span class="rank">' + (parseInt(rank) + 1) + '</span>\
-					<div class="track-info"> </div>\
-					<h3 class="track_name">\
-		                <a class="artist" title="' + songmap["artist"] + ' - search Spotify for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a> - <a class="track" title="Search for ' + songmap["title"] + '" onClick="spotifySearch(' + songmap["mediaid"] + ',\'' + songmap["title"] + '\')">\
-		    				<span class="base-title">' + songmap["title"] + '</span>\
-		    			</a>\
-		                <img src="http://static.hypem.net/rev_1330987235/images/icon-share-small.png" class="share" onmouseover="share_item(\'' + songmap["mediaid"] + '\'); return false;">\
-					</h3>\
-					\
-				    <div class="meta">\
-				        <span class="buy">\
-	                        <a href="" onclick="toggle_item_activity(\'reposts\', \'' + songmap["mediaid"] + '\', 0); return false;">\
-		                    Posted by ' + songmap["posted_count"] + ' blogs</a> • \
-				        </span>\
-				    </div>\
-				    \
-			        <p>\
-						<a class="blog-fav-off" title="See other tracks posted by this blog" href="/blog/earmilk/11067">' + songmap["sitename_first"] + '</a><a id="fav_site_' + songmap["siteid_first"] + '" class="follow-pill fav_site_' + songmap["siteid_first"] + ' follow" onclick="toggle_favorite(\'site\',\'' + songmap["siteid_first"] + '\');return false;" href="#"><em></em><span>Follow</span></a>\
-						\
-						"' + songmap["description"] + '"\
-						<a class="readpost" href="' + songmap["posturl_first"] + '" title="Read this post: ' + songmap["artist"] + ' - ' + songmap["title"] + '">\
-						\
-						\
-						<span style="background:url(' + songmap["thumb_url"] + ');"></span>\
-						</a>\
-		        	</p>\
-		        	<div id="search_results_' + songmap["mediaid"] + '"></div>\
-	        		<div class="act_info" style=""></div>\
-					</div>\
-					</div>');
-	    	}
-    	});
-
-		function spotifySearch(mediaid, searchterm){
-            var search = new models.Search(searchterm);
-            search.localResults = models.LOCALSEARCHRESULTS.APPEND;
-            
-            var searchHTML = document.getElementById('search_results_' + mediaid);
-
-            search.observe(models.EVENT.CHANGE, function() {
-                var results = search.tracks;
-                for(i = 0; i < results.length; i++){
-                    var link = document.createElement('li');
-                    var a = document.createElement('a');
-                    a.href = results[i].uri;
-                    link.appendChild(a);
-                    a.innerHTML = results[i].name;
-                    searchHTML.appendChild(link);
-                }
-            });
-
-            search.appendNext();
-        }
-    </script>
 </head>
 <body>
 	<div class="loading">
