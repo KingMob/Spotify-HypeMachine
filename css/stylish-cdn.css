@@ -3235,6 +3235,10 @@ ul.tabbernav li,
 #playerPrev:hover { background-position: -64px -32px; }
 #playerPlay {       background-position:  0px  0px; }
 #playerPlay:hover { background-position:  0px -32px; }
+
+#playerPlay.paused { background-position:  -32px  0px; }
+#playerPlay.paused:hover { background-position:  -32px -32px; }
+
 #playerNext {       background-position: -96px  0px; }
 #playerNext:hover { background-position: -96px -32px; }
 #playerFav.fav-off {        background-position: 0  0px; }

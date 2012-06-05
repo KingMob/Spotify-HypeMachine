@@ -32,11 +32,10 @@
 		</div>
 		<div id="player-inner">
 			<div id="player-controls"> 
-	            <!-- <a href="#" onclick="prevTrack(this);return false;" id="playerPrev"></a> -->
-	            <a href="#" onclick="player.playing = !(player.playing);return false;" id="playerPlay" class=""></a>
-	            <a href="#" id="playerFav" class="fav_item_1mkrw fav-off"></a>
-	            
-	            <!-- <a href="#" onclick="nextTrack(this);return false;" id="playerNext"></a> -->
+	            <a href="#" onclick="player.previous(); return false;" id="playerPrev"></a>
+	            <a href="#" onclick="togglePlayPause(); return false;" id="playerPlay" class=""></a>
+	            <a href="#" id="playerFav" class="fav-off"></a>
+	            <a href="#" onclick="player.next(); return false;" id="playerNext"></a>
 	          
 	            <!-- <div id="player-queue"></div> -->
 	            <div id="player-nowplaying"><a id="player-nowplaying-artist" href="spotify:search:artist"></a><span> - </span><a id="player-nowplaying-track" href="spotify:search:track"></a><div class="share" id="player-share-button" style="opacity: 1; " onClick="application.showSharePopup(document.getElementById($(this).attr('id')),player.track.uri);"></div></div>

@@ -137,3 +137,8 @@ function spotifySearch(mediaid, artistTerm, trackTerm){
 function shareButton(mediaid, contentURI){
 	var element = document.create()
 }
+
+function togglePlayPause(){
+	$("#playerPlay").toggleClass("paused");
+	player.playing = !player.playing;
+}
