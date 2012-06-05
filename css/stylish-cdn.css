@@ -1883,7 +1883,7 @@ ul.tabbernav li,
 #header {
     background: #83c441;
     height: 42px;
-    margin-bottom: 33px;
+    /*margin-bottom: 33px;*/
     position: relative;
     text-align: right;
     z-index: 100;
@@ -2925,6 +2925,7 @@ ul.tabbernav li,
     position: relative;
     text-align: left;
     width: 980px;
+    background-color: black;
 }
 
 #player-controls:hover #player-timebar {
@@ -3029,10 +3030,13 @@ ul.tabbernav li,
 }
 
 #player-controls {
-    float: left;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
     height: 32px;
-    position: relative;
-    width: 735px;
+    /*position: relative;*/
+    width: 660px;
+    clear: left;
 }
 
 #player-controls.disabled {
@@ -3248,6 +3252,7 @@ ul.tabbernav li,
 
 #player-nowplaying a {
     font-weight: 700;
+    color: #eee;
 }
 
 #player-nowplaying > * {
@@ -4270,14 +4275,14 @@ a:hover#soundcloud {
     border-radius: 4px;
 }
 
-.section .tools .share {
+/*.section .tools .share {
     cursor: pointer;
     float: right;
     display: block;
     width: 20px;
     height: 20px;
     background: url(http://static-ak.hypem.net/rev_1330987235/images/icon-share.png);
-}
+}*/
 
 .section .tools .sparkdiv:hover {
     cursor: pointer;
@@ -4285,15 +4290,15 @@ a:hover#soundcloud {
     border-color: #e0d4b2;
 }
 
-.section .share {
+/*.section .share {
     cursor: pointer;
     display: inline-block;
     margin-left: 10px;
-}
+}*/
 
-.section .share:hover {
+/*.section .share:hover {
     opacity: 0.5;
-}
+}*/
 
 .section .tools .favdiv a {
     float: left;

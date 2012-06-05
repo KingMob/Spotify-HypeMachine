@@ -6,7 +6,7 @@
         @import url('sp://import/css/player.css');
         @import url('sp://import/css/ui.css');
 
-        @import url('sp://hypemachine/css/layout-wide.css');
+        /*@import url('sp://hypemachine/css/layout-wide.css');*/
         @import url('sp://hypemachine/css/stylish-cdn.css');
 
         h1, ul {margin:0 0 30px;}
@@ -14,7 +14,6 @@
 
         /*#logo {background-color: #83C441;}*/
         #content-left {float: none; margin-left: auto; margin-right: auto;}
-
     </style>
 
     <script type="text/javascript" src="sp://hypemachine/js/jquery-1.7.2.js"></script>
@@ -114,10 +113,26 @@
     </script>
 </head>
 <body>
+	<div class="loading">
+	  <div class="throbber"><div></div></div>
+	</div>
+	<!-- <div class=".sp-player"></div> -->
     <div id="container" class="clearfix">
     	<div id="header">
-			<a id="logo" href="/" title="The Hype Machine"></a>
+			<span id="logo" title="The Hype Machine"></span>
 		</div>
+		<div id="player-inner">
+			<div id="player-controls"> 
+	            <!-- <a href="#" onclick="prevTrack(this);return false;" id="playerPrev"></a> -->
+	            <a href="#" onclick="player.playing = !(player.playing);return false;" id="playerPlay" class=""></a>
+	            <a href="#" id="playerFav" class="fav_item_1mkrw fav-off"></a>
+	            
+	            <!-- <a href="#" onclick="nextTrack(this);return false;" id="playerNext"></a> -->
+	          
+	            <!-- <div id="player-queue"></div> -->
+	            <div id="player-nowplaying"><a id="player-nowplaying-artist" href="spotify:search:artist"></a><span> - </span><a id="player-nowplaying-track" href="spotify:search:track"></a><div class="share" id="player-share-button" style="opacity: 1; " onClick="application.showSharePopup(document.getElementById($(this).attr('id')),player.track.uri);"></div></div>
+	        </div>
+	    </div>
 	    <div id="content-left">
 		</div>
     </div>
