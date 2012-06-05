@@ -119,7 +119,7 @@ function spotifySearch(mediaid, artistTerm, trackTerm){
 
                 var a = $('<a>').attr("href", track.uri).addClass("creator");
                 a.html(track.artists[0].name.decodeForHTML() + " - " + track.name.decodeForHTML());
-                var shareButton = $('<button id="share_' + id + '" class="button icon" value="' + id + '"><span class="share"></span>Share</button>');
+                var shareButton = $('<button id="share_' + id + '" class="sp-button icon" value="' + id + '"><span class="share"></span>Share</button>');
                 shareButton.click(function(data){
                 	console.log('share_' + id);
                 	console.log($("#share_" + id).get(0).getClientRects()[0]);
