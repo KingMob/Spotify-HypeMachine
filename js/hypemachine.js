@@ -114,12 +114,16 @@ function spotifySearch(mediaid, artistTerm, trackTerm){
     	}
     	else {
             search.tracks.forEach(function (track) {
-                // var link = $('<li>');
+                var URIArray = track.uri.split(":");
+                var id = URIArray[URIArray.length-1];
+
                 var a = $('<a>').attr("href", track.uri).addClass("creator");
                 a.html(track.artists[0].name.decodeForHTML() + " - " + track.name.decodeForHTML());
-                var shareButton = $('<button id="share_' + track.uri + '" class="button icon" value="' + track.uri + '"><span class="share"></span>Share</button>');
+                var shareButton = $('<button id="share_' + id + '" class="button icon" value="' + id + '"><span class="share"></span>Share</button>');
                 shareButton.click(function(data){
-                	application.showSharePopup($("share_" + track.uri), player.track.uri);
+                	console.log('share_' + id);
+                	console.log($("#share_" + id).get(0).getClientRects()[0]);
+                	application.showSharePopup($("#share_" + id).get(0), track.uri);
                 });
                 // link.append(a);
                 searchResultsHTML.append($('<li>').append(a).append(shareButton));
