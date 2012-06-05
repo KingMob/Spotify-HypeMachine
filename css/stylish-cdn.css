@@ -3276,7 +3276,7 @@ body #player-inner .pause:hover {
 #radioheader h3 {
     font-size: 15px;
 }
-
+/*
 #download-radio {
     background: url(http://static-ak.hypem.net/rev_1320095546/images/download.jpg) left bottom no-repeat;
     float: left;
@@ -3393,7 +3393,7 @@ body #player-inner .pause:hover {
 
 .radio ol li.odd {
     background: #eee;
-}
+}*/
 
 #content-left #radio-tracks h3 {
     margin-bottom: 10px;
@@ -4488,7 +4488,7 @@ a:hover#soundcloud {
     position: relative;
     z-index: 9999;
 }
-
+/*
 #player-container .twitter-share {
     border-right: none;
 }
@@ -4603,7 +4603,7 @@ a:hover#soundcloud {
     line-height: 25px;
     width: 180px;
 }
-
+*/
 .user-stats #avatar {
     float: left;
     margin: 0px 10px 10px 0;
