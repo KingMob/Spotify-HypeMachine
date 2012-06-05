@@ -3,7 +3,7 @@
             "en": "An example app to learn the Spotify API and integrate with an outside music site, Hype Machine. All images/resources copyright Hype Machine"
     },
     "AppIcon": {
-            "36x36": "images/36x36 icon.png"
+            "18x18": "images/18x18 icon.png"
     },
     "AppName": {
             "en": "Hype Machine - Spotify example"
