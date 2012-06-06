@@ -70,30 +70,22 @@ $(document).ready(function(){
 	}
 
 	player.observe(models.EVENT.CHANGE, function(event) {
-		console.log(event.data.curtrack);
+		// console.log(event);
 		updatePlayer(player.track);
 	}); 
+
 });
 
-function updatePlayer(track){
-	if(track === null || player.track.data.isAd){
-		var artistName = "";
-		var trackName = "";
+function spotifySearch(mediaid, artistTerm, trackTerm, conjunction, continueSearchIfEmpty){
+	if(typeof conjunction === "undefined"){
+		conjunction = "AND";
 	}
-	else{
-		var artistName = track.album.artist.name.decodeForHTML();
-		var trackName = track.name.decodeForHTML();
+	if(typeof continueSearchIfEmpty === "undefined"){
+		continueSearchIfEmpty = true;
 	}
-	$("#player-nowplaying-artist").html(artistName).attr("href", "spotify:search:artist:" + artistName);
-	$("#player-nowplaying-track").html(trackName).attr("href", "spotify:search:track:" + trackName);
-}
 
-
-function spotifySearch(mediaid, artistTerm, trackTerm){
-	// var searchTerm = "artist:'" + artistTerm + "' track:'" + trackTerm + "'";
-	var searchTerm = unescape(artistTerm) + " " + unescape(trackTerm);
-	console.log("Media ID: " + mediaid);
-	console.log("Search term: " + searchTerm);
+	var searchTerm = "\"" + unescape(artistTerm) + "\" " + conjunction + " \"" + unescape(trackTerm) + "\"";
+	// console.log("Search term: " + searchTerm);
 
     var search = new models.Search(searchTerm,
     	{
@@ -103,42 +95,69 @@ function spotifySearch(mediaid, artistTerm, trackTerm){
     	});
     search.localResults = models.LOCALSEARCHRESULTS.APPEND;
     
-    var searchResultsHTML = $('#search_results_' + mediaid);
-    searchResultsHTML.empty();
+    $('#search_results_' + mediaid).empty();
 
-    search.observe(models.EVENT.CHANGE, function() {
-    	if(search.totalTracks === 0 && artistTerm !== "" && trackTerm !== ""){
-			searchResultsHTML.append($('<li>No direct matches found. Sorry!</li>'));
-			spotifySearch(mediaid, artistTerm, "");
-			spotifySearch(mediaid, "", trackTerm);
-    	}
-    	else {
-            search.tracks.forEach(function (track) {
-                var URIArray = track.uri.split(":");
-                var id = URIArray[URIArray.length-1];
-
-                var a = $('<a>').attr("href", track.uri).addClass("creator");
-                a.html(track.artists[0].name.decodeForHTML() + " - " + track.name.decodeForHTML());
-                var shareButton = $('<button id="share_' + id + '" class="sp-button icon" value="' + id + '"><span class="share"></span>Share</button>');
-                shareButton.click(function(data){
-                	console.log('share_' + id);
-                	console.log($("#share_" + id).get(0).getClientRects()[0]);
-                	application.showSharePopup($("#share_" + id).get(0), track.uri);
-                });
-                // link.append(a);
-                searchResultsHTML.append($('<li>').append(a).append(shareButton));
-            });
-        }
-    });
-
+    search.observe(models.EVENT.CHANGE, function(search){processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfEmpty);});
     search.appendNext(); 
 }
 
-function shareButton(mediaid, contentURI){
-	var element = document.create()
+function processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfEmpty){
+	if(search.totalTracks === 0){
+		if(continueSearchIfEmpty){
+			spotifySearch(mediaid, artistTerm, trackTerm, "OR", false);
+		}
+		else{
+			$('#search_results_' + mediaid).append($('<p>No matches found. Sorry!</p>'));
+		}
+	}
+	else {
+        addSearchResults(search.tracks, mediaid);
+    }
 }
+
+function addSearchResults(tracks, mediaid){
+	var tempPlaylist = new models.Playlist();
+	tracks.forEach(function (track) {
+		tempPlaylist.add(track);
+	});
+	var playlistView = new views.List(tempPlaylist);
+
+	$('#search_results_' + mediaid).append(playlistView.node);
+}
+
+
+function updatePlayer(track){
+	if(track === null || player.track.data.isAd){
+		var artistName = "";
+		var trackName = "";
+		$("#playerFav").removeClass("fav-on").addClass("fav-off");
+	}
+	else{
+		var artistName = track.album.artist.name.decodeForHTML();
+		var trackName = track.name.decodeForHTML();
+		updateStarred(track.starred);
+	}
+	$("#player-nowplaying-artist").html(artistName).attr("href", "spotify:search:artist:" + artistName);
+	$("#player-nowplaying-track").html(trackName).attr("href", "spotify:search:track:" + trackName);
+}
+
 
 function togglePlayPause(){
 	$("#playerPlay").toggleClass("paused");
 	player.playing = !player.playing;
+}
+
+function toggleStarred(){
+	player.track.starred = !player.track.starred;
+	updateStarred(player.track.starred);
+}
+
+function updateStarred(starred){
+	var playerStar = $("#playerFav");
+	if(starred){
+		playerStar.removeClass("fav-off").addClass("fav-on");
+	}
+	else{
+		playerStar.removeClass("fav-on").addClass("fav-off");
+	}
 }
