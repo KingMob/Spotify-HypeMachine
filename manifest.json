@@ -6,7 +6,7 @@
             "18x18": "images/18x18 icon.png"
     },
     "AppName": {
-            "en": "Hype Machine - Spotify example"
+            "en": "Hype Machine"
     },
     "BundleIdentifier": "hypemachine",
     "BundleType": "Application",
