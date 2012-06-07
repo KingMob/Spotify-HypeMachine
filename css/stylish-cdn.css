@@ -20,6 +20,31 @@ html[xmlns] .clearfix { display: block; }
     width: 100%;
 }*/
 
+.single-song-result {
+    margin: 5px 0 0 72px;
+    /*width: 506px;*/
+    word-wrap: break-word;
+    clear: left;
+}
+
+.single-song-result .sp-player {
+    vertical-align: middle;
+}
+
+.single-song-result-text {
+    display: inline;
+    color: #676767;
+    font: 700 20px/25px 'Helvetica', 'Arial', sans-serif;
+    letter-spacing: -1px;
+    /*padding-right: 115px;*/
+    position: relative;
+    text-rendering: optimizeLegibility;
+}
+
+.single-song-result-trackname {
+    margin-left: 10px;    
+}
+
 #player-loading {
     left: 50%;
     position: fixed;
@@ -1700,7 +1725,7 @@ ul.tabbernav li,
     position: relative;
     top: -5px;
 }
-
+/*
 #events #artists-h3,
 #tracks-h3 {
     color: #000;
@@ -1839,7 +1864,7 @@ ul.tabbernav li,
 
 #events-remote {
     padding: 5px 0 0;
-}
+}*/
 
 #fav_searches_rest,
 #fav_blogs_rest {

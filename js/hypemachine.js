@@ -9,6 +9,7 @@ var sp = getSpotifyApi(1),
 
 var args = models.application.arguments;
 
+// Init func to run when jQuery loaded
 $(document).ready(function(){
 	updatePlayer(player.track);
 
@@ -107,7 +108,8 @@ function processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfE
 			spotifySearch(mediaid, artistTerm, trackTerm, "OR", false);
 		}
 		else{
-			$('#search_results_' + mediaid).append($('<p>No matches found. Sorry!</p>'));
+			var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").text("No matches found. Sorry!").addClass("single-song-result-text"));
+			$('#search_results_' + mediaid).append(resultsHeader);
 		}
 	}
 	else {
@@ -116,13 +118,37 @@ function processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfE
 }
 
 function addSearchResults(tracks, mediaid){
-	var tempPlaylist = new models.Playlist();
-	tracks.forEach(function (track) {
-		tempPlaylist.add(track);
-	});
-	var playlistView = new views.List(tempPlaylist);
 
-	$('#search_results_' + mediaid).append(playlistView.node);
+	var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").text("Possible matches on Spotify:").addClass("single-song-result-text"));
+	$('#search_results_' + mediaid).append(resultsHeader);
+
+	tracks.forEach(function (track) {
+		addSingleTrack(track, mediaid);
+	});
+}
+
+function addSingleTrack(track, mediaid){
+	var tempPlaylist = new models.Playlist();
+	tempPlaylist.add(track);
+	
+	var playerView = new views.Player();
+	playerView.track = null;
+	playerView.context = tempPlaylist;
+
+	var jqPlayer = $(playerView.node).addClass('sp-image-small');
+	var playerText = $("<a>").text(trackInfo(track)).addClass('single-song-result-text single-song-result-trackname');
+	playerText.click(function(){
+		if(player.track == null || !player.playing || player.track.uri !== track.uri){
+			player.play(track.uri, tempPlaylist);
+		}
+		else {
+			player.playing = false;
+		}
+	})
+	var container = $("<div>").addClass('single-song-result');
+	container.append(jqPlayer).append(playerText);
+
+	$('#search_results_' + mediaid).append(container);
 }
 
 
@@ -160,4 +186,8 @@ function updateStarred(starred){
 	else{
 		playerStar.removeClass("fav-on").addClass("fav-off");
 	}
+}
+
+function trackInfo(track){
+	return track.artists[0].name.decodeForHTML() + " - " + track.name.decodeForHTML();
 }
