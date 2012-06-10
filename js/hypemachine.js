@@ -107,7 +107,7 @@ function processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfE
 			spotifySearch(mediaid, artistTerm, trackTerm, "OR", false);
 		}
 		else{
-			var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").text("No matches found. Sorry!").addClass("single-song-result-text"));
+			var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").html("No matches found. Sorry!").addClass("single-song-result-text"));
 			$('#search_results_' + mediaid).append(resultsHeader);
 		}
 	}
@@ -118,7 +118,7 @@ function processSearch(search, mediaid, artistTerm, trackTerm, continueSearchIfE
 
 function addSearchResults(tracks, mediaid){
 
-	var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").text("Possible matches on Spotify:").addClass("single-song-result-text"));
+	var resultsHeader = $("<div>").addClass("single-song-result").append($("<span>").html("Possible matches on Spotify:").addClass("single-song-result-text"));
 	$('#search_results_' + mediaid).append(resultsHeader);
 
 	tracks.forEach(function (track) {
@@ -135,7 +135,7 @@ function addSingleTrack(track, mediaid){
 	playerView.context = tempPlaylist;
 
 	var jqPlayer = $(playerView.node).addClass('sp-image-small');
-	var playerText = $("<a>").text(trackInfo(track)).addClass('single-song-result-text single-song-result-trackname');
+	var playerText = $("<a>").html(trackInfo(track)).addClass('single-song-result-text single-song-result-trackname');
 	playerText.click(function(){
 		if(player.track == null || !player.playing || player.track.uri !== track.uri){
 			player.play(track.uri, tempPlaylist);
