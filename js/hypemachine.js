@@ -34,10 +34,10 @@ $(document).ready(function(){
 			return "";
 		}
 		rank = parseInt(key);
-		oddEvenStr = rank % 2 === 0 ? "even" : "odd";
+		oddEvenClass = rank % 2 === 0 ? "even" : "odd";
 
 		return $('\
-			<div id="section-track-' + songmap["mediaid"] + '" class="section section-track ' + oddEvenStr + '" >\
+			<div id="section-track-' + songmap["mediaid"] + '" class="section section-track ' + oddEvenClass + '" >\
 			<div class="section-player">\
 			<span class="rank">' + (parseInt(rank) + 1) + '</span>\
 			<div class="track-info"> </div>\
