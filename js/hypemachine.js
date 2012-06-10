@@ -49,9 +49,7 @@ $(document).ready(function(){
 			\
 		    <div class="meta">\
 		    	Search Hype Machine for: <a class="artist" title="' + songmap["artist"] + ' - search Hype Machine for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a>\
-		        <span class="buy">\
                     Posted by ' + songmap["posted_count"] + ' blogs • \
-		        </span>\
 		    </div>\
 		    \
 	        <p>\
