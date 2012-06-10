@@ -30,6 +30,7 @@ $(document).ready(function(){
 	});
 
 	function trackHTML(key, songmap){
+		// Ignore version key in JSON
 		if(key === "version") {
 			return "";
 		}
@@ -150,7 +151,7 @@ function addSingleTrack(track, mediaid){
 	$('#search_results_' + mediaid).append(container);
 }
 
-
+// Funcs for player bar at top
 function updatePlayer(track){
 	if(track === null || player.track.data.isAd){
 		var artistName = "";
@@ -187,6 +188,7 @@ function updateStarred(starred){
 	}
 }
 
+// General func to convert track info to preferred display format of "Artist - Title"
 function trackInfo(track){
 	return track.artists[0].name.decodeForHTML() + " - " + track.name.decodeForHTML();
 }
