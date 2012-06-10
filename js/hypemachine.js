@@ -49,7 +49,7 @@ $(document).ready(function(){
 			<button class="sp-button sp-primary search-spotify-button" onClick="spotifySearch(\'' + songmap["mediaid"] + '\', \'' + escape(songmap["artist"]) + '\', \'' + escape(songmap["title"]) + '\')">Search Spotify<br>for this track</button>\
 			\
 		    <div class="meta">\
-		    	Search Hype Machine for: <a class="artist" title="' + songmap["artist"] + ' - search Hype Machine for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a>\
+		    	Search Hype Machine for: <a class="artist" title="' + songmap["artist"] + ' - search Hype Machine for this artist" href="http://hypem.com/artist/' + encodeURIComponent(songmap["artist"]) + '">' + songmap["artist"] + '</a><br>\
                     Posted by ' + songmap["posted_count"] + ' blogs • \
 		    </div>\
 		    \
