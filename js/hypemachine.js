@@ -33,14 +33,14 @@ $(document).ready(function(){
 		if(key === "version") {
 			return "";
 		}
+
 		rank = parseInt(key);
 		oddEvenClass = rank % 2 === 0 ? "even" : "odd";
 
 		return $('\
 			<div id="section-track-' + songmap["mediaid"] + '" class="section section-track ' + oddEvenClass + '" >\
 			<div class="section-player">\
-			<span class="rank">' + (parseInt(rank) + 1) + '</span>\
-			<div class="track-info"> </div>\
+			<span class="rank">' + (rank + 1) + '</span>\
 			<h3 class="track_name">\
                 <a class="artist" title="' + escape(songmap["artist"]) + ' - ' + escape(songmap["title"]) + ' - search Spotify for this song" onClick="spotifySearch(\'' + songmap["mediaid"] + '\', \'' + escape(songmap["artist"]) + '\', \'' + escape(songmap["title"]) + '\')">\
     				<span class="base-title">' + songmap["artist"] + ' - ' + songmap["title"] + '</span>\
